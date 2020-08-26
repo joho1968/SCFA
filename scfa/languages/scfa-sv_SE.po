@@ -1,0 +1,171 @@
+# SCFA Language File (.PO)
+# Copyright (C) 2020 Joaquim Homrighausen
+# This file is distributed under the same license as the SCFA package.
+# Joaquim Homrighausen <joho@webbplatsen.se>, 2020
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SCFA 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-25 10:48+0200\n"
+"PO-Revision-Date: 2020-08-25 11:55+0200\n"
+"Last-Translator: Joaquim Homrighausen <joho@webbplatsen.se>\n"
+"Language-Team: Swedish\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# Description
+msgid "Generate inline HTML for Font Awesome using shortcodes"
+msgstr "Skapa HTML för Font Awesome med shortcodes"
+
+#: admin/class-scfa-admin.php:131
+msgid "Insert SCFA"
+msgstr "Lägg till SCFA"
+
+#: admin/class-scfa-admin.php:152
+msgid ""
+"Please note that to serve the specified asset URL as CSS, Font Awesome "
+"expects to be able to include web fonts relative to the URL you specify."
+msgstr ""
+"Vänligen notera att för att använda en specific URL som CSS-källa, så "
+"förväntar sig Font Awesome att kunna inkludera webbtypsnitt relativt från "
+"den URL du anger."
+
+#: admin/class-scfa-admin.php:153
+msgid ""
+"If you specify https://mysite.com/assets/css/all.min.css, Font Awesome will "
+"attempt to include web fonts from https://mysite.com/assets/webfonts/..."
+msgstr ""
+"Om du anger https://mysite.com/assets/css/all.min.css, så kommer Font "
+"Awesome att försöka inkludera webbtypsnitt från https://mysite.com/assets/"
+"webfonts/..."
+
+#: admin/class-scfa-admin.php:157
+msgid "Please make sure you include the Font Awesome assets in some other way."
+msgstr "Kontrollera att Font Awesome-resurser inkluderas på något annat sätt."
+
+#: admin/class-scfa-admin.php:167
+msgid "Quick reference"
+msgstr "Snabbreferens"
+
+#: admin/class-scfa-admin.php:168
+msgid ""
+"This is intended as a quick reference for the shortcode. For a complete list "
+"of Font Awesome classes, please see"
+msgstr ""
+"Detta är tänkt som en snabbreferens för shortcoden. För en fullständig lista "
+"med Front Awesome-klasser, vänligen se"
+
+#: admin/class-scfa-admin.php:170
+msgid "Some icon styles may only be available with a Pro license"
+msgstr "Vissa ikonstilar kan kräva en Pro-licens"
+
+#: admin/class-scfa-admin.php:172
+msgid ""
+"You can (obviously) specify everything class related in the class=\"\" "
+"parameter if that is more convenient for you"
+msgstr ""
+"Du kan (naturligtvis) ange allt klassrelaterat i class=\"\"-parametern om "
+"det fungerar bättre för dig"
+
+#: admin/class-scfa-admin.php:174
+msgid "General format"
+msgstr "Generellt syntax"
+
+#: admin/class-scfa-admin.php:177
+msgid "Generate <span> element with icon and default (icon) style:"
+msgstr "Skapa <span>-element med ikon och standardstil för ikon:"
+
+#: admin/class-scfa-admin.php:182
+msgid "Generate <span> element with the specified style and icon:"
+msgstr "Skapa <span>-element med specifik stil och ikon:"
+
+#: admin/class-scfa-admin.php:187
+msgid "Generate <span> element with the specified style and icon and size:"
+msgstr "Skapa <span>-element med specifik stil, ikon och storlek:"
+
+#: admin/class-scfa-admin.php:192
+msgid ""
+"Generate <span> element with the specified style and icon and custom CSS:"
+msgstr "Skapa <span>-element med specifik stil, ikon och egen CSS:"
+
+#: admin/class-scfa-admin.php:197
+msgid ""
+"Generate <span> element with the specified style and icon and custom class:"
+msgstr "Skapa <span>-element med specifik stil, ikon och class-tillägg:"
+
+#: admin/class-scfa-admin.php:202
+msgid ""
+"Generate <span> element with the specified style and icon and fixed width:"
+msgstr "Skapa <span>-element med specifik stil, ikon och fast bredd:"
+
+#: admin/class-scfa-admin.php:217
+msgid "SCFA settings"
+msgstr "SCFA-inställningar"
+
+#: admin/class-scfa-admin.php:233
+msgid "Asset URL"
+msgstr "URL"
+
+#: admin/class-scfa-admin.php:242
+msgid "Enter a valid URL for the CSS or JS file to be used"
+msgstr "Ange en giltig URL för CSS och/eller JS filer som skall användas"
+
+#: admin/class-scfa-admin.php:244
+msgid ""
+"The URL of a Font Awesome CSS or JS file to be included when your site "
+"loads. Leave empty to use included Font Awesome CSS resources. If this is "
+"configured correctly, you will see some Font Awesome icons below the SCFA "
+"header on this page."
+msgstr ""
+"URL till Font Awesome CSS och/eller JS fil som skall inkluderas när din "
+"webbplats laddas. Lämna fältet tomt för att använda de Font Awesome-resurser "
+"som är inkluderade med SCFA. Om denna inställning är korrekt konfigurerad så "
+"ser du två Font Awesome ikoner under SCFA-titeln på denna sida."
+
+#: admin/class-scfa-admin.php:254
+msgid "Other settings"
+msgstr "Andra inställningar"
+
+#: admin/class-scfa-admin.php:256
+msgid "Asset type"
+msgstr "Typ"
+
+#: admin/class-scfa-admin.php:270
+msgid "How the asset URL (above) should be used"
+msgstr "Hur URLen (ovan) skall användas"
+
+#: admin/class-scfa-admin.php:277
+msgid "Default style"
+msgstr "Standard stil"
+
+#: admin/class-scfa-admin.php:291
+msgid "Default icon style if not specified"
+msgstr "Standard ikonstil"
+
+#: admin/class-scfa-admin.php:298
+msgid "Remove settings"
+msgstr "Radera inställningar"
+
+#: admin/class-scfa-admin.php:306
+msgid "Remove all SCFA plugin settings and data when plugin is uninstalled."
+msgstr "Radera alla SCFA-inställningar när tillägget avinstalleras."
+
+#: admin/class-scfa-admin.php:265
+msgid "Serve local Font Awesome CSS"
+msgstr "Använd de inkluderade Font Awesome-filerna"
+
+#: admin/class-scfa-admin.php:266
+msgid "Serve asset URL as CSS"
+msgstr "Använd Font Awesome-filer från URL (CSS)"
+
+#: admin/class-scfa-admin.php:267
+msgid "Serve asset URL as Font Awesome CDN kit"
+msgstr "Använd Font Awesome-filer från Font Awesome CDN kit"
+
+#: admin/class-scfa-admin.php:268
+msgid "None of the above, Font Awesome is activated elsewhere"
+msgstr "Inget av ovan, jag inkluderar Font Awesome på annat sätt"
