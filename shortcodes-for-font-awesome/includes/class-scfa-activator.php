@@ -7,7 +7,7 @@
  * @subpackage scfa/includes
  * @author     Joaquim Homrighausen <joho@webbplatsen.se>
  *
- * class-scfa-activator.php
+ * class-scfa-activator.php (Shortcodes for Font Awesome)
  * Copyright (C) 2020 Joaquim Homrighausen
  *
  * This file is part of SCFA. SCFA is free software.

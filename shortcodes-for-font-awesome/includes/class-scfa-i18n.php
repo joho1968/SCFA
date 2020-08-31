@@ -1,13 +1,13 @@
 <?php
 /**
- * Internationalization functionality.
+ * Internationalization functionality for SCFA
  *
  * @since      1.0.0
  * @package    SCFA
  * @subpackage scfa/includes
  * @author     Joaquim Homrighausen <joho@webbplatsen.se>
  *
- * class-scfa-i18n.php
+ * class-scfa-i18n.php (Shortcodes for Font Awesome)
  * Copyright (C) 2020 Joaquim Homrighausen
  *
  * This file is part of SCFA. SCFA is free software.
@@ -32,7 +32,7 @@ class scfa_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'scfa',
+			SCFA_PLUGINLANG_SLUG,
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

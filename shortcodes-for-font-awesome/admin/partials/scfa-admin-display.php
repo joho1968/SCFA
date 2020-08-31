@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Provide a admin area view for the plugin
+ * Provide a admin area view for SCFA
  *
  * This file is part of SCFA.
  */

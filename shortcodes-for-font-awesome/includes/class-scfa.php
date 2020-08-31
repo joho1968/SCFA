@@ -1,13 +1,13 @@
 <?php
 /**
- * The core plugin class.
+ * The core plugin class for SCFA
  *
  * @since      1.0.0
  * @package    SCFA
  * @subpackage scfa/includes
  * @author     Joaquim Homrighausen <joho@webbplatsen.se>
  *
- * class-scfa.php
+ * class-scfa.php (Shortcodes for Font Awesome)
  * Copyright (C) 2020 Joaquim Homrighausen
  *
  * This file is part of SCFA. SCFA is free software.
@@ -41,7 +41,7 @@ class scfa {
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'scfa';
+		$this->plugin_name = SCFA_PLUGINNAME_SLUG;
 
 		$this->load_dependencies();
 		$this->set_locale();

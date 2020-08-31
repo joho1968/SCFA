@@ -1,4 +1,4 @@
-=== SCFA ===
+=== SCFA (Shortcodes for Font Awesome) ===
 Contributors: joho68
 Donate link: https://www.joho.se/scfa/
 Tags: font awesome, fontawesome, webfont, font, icon, shortcode
@@ -30,7 +30,7 @@ A few notes about this plugin:
 
 This section describes how to install the plugin and get it working.
 
-1. Upload the contents of the `scfa` folder to the `/wp-content/plugins/` directory
+1. Upload the contents of the `shortcodes-for-font-awesome` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Configure accordingly
 

@@ -8,7 +8,7 @@
  * @author            Joaquim Homrighausen <joho@webbplatsen.se>
  *
  * @wordpress-plugin
- * Plugin Name:       SCFA
+ * Plugin Name:       Shortcodes for Font Awesome
  * Plugin URI:        https://github.com/joho1968/SCFA
  * Description:       Generate inline HTML for Font Awesome using shortcodes
  * Version:           1.0.0
@@ -16,10 +16,10 @@
  * Author URI:        https://github.com/joho1968/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       scfa
+ * Text Domain:       shortcodes-for-font-awesome
  * Domain Path:       /languages
  *
- * scfa.php
+ * scfa.php (Shortcodes for Font Awesome)
  * Copyright (C) 2020 Joaquim Homrighausen
  *
  * This file is part of SCFA. SCFA is free software.
@@ -46,9 +46,13 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Currently plugin version.
+ * Current plugin version.
  */
 define( 'SCFA_VERSION', '1.0.0' );
+define( 'SCFA_PLUGINNAME_HUMAN', 'SCFA' );
+define( 'SCFA_PLUGINNAME_SLUG',  'shortcodes-for-font-awesome' );
+define( 'SCFA_PLUGINLANG_SLUG',  'shortcodes-for-font-awesome' );
+
 
 /**
  * The code that runs during plugin activation.

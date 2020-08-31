@@ -6,7 +6,7 @@
  * @subpackage scfa/admin
  * @author     Joaquim Homrighausen <joho@webbplatsen.se>
  *
- * class-scfa-admin.php
+ * class-scfa-admin.php (Shortcodes for Font Awesome)
  * Copyright (C) 2020 Joaquim Homrighausen
  *
  * This file is part of SCFA. SCFA is free software.
@@ -127,7 +127,7 @@ class scfa_Admin {
 	public function make_classic_editor_button() {
 		echo '<button id="scfa_shortcode" class="button" type="button">'.
 		     '<span class="fas fa-code"></span> '.
-		     esc_html__( 'Insert SCFA', 'scfa' ).
+		     esc_html__( 'Insert SCFA', SCFA_PLUGINLANG_SLUG ).
 			 '</button>';
 	}
 
@@ -139,21 +139,21 @@ class scfa_Admin {
 			return;
 		}
 		echo '<div class="wrap">';
-		echo '<h1>SCFA</h1>';
+		echo '<h1>Shortcodes for Font Awesome (SCFA)</h1>';
 		echo '<h3>';
 		echo '[ <span class="small fas fa-font"></span>';
 		echo '&nbsp;';
 		echo '<span class="fas fa-code"></span>';
 		echo ' ]</h3>';
 		if ( $this->scfa_asset_type == 2 ) {
-			echo '<p>';
-			echo esc_html__( 'Please note that to serve the specified asset URL as CSS, Font Awesome expects to be able to include web fonts relative to the URL you specify.', 'scfa' );
-			echo ' ' . esc_html__( 'If you specify https://mysite.com/assets/css/all.min.css, Font Awesome will attempt to include web fonts from https://mysite.com/assets/webfonts/...', 'scfa' );
-			echo '</p>';
+			echo '<div class="notice notice-info">';
+			echo esc_html__( 'Please note that to serve the specified asset URL as CSS, Font Awesome expects to be able to include web fonts relative to the URL you specify.', SCFA_PLUGINLANG_SLUG );
+			echo ' ' . esc_html__( 'If you specify https://mysite.com/assets/css/all.min.css, Font Awesome will attempt to include web fonts from https://mysite.com/assets/webfonts/...', SCFA_PLUGINLANG_SLUG );
+			echo '</div>';
 		} elseif ( $this->scfa_asset_type == 4  ) {
-			echo '<p>';
-			echo esc_html__( 'Please make sure you include the Font Awesome assets in some other way.', 'scfa' );
-			echo '</p>';
+			echo '<div class="notice notice-info">';
+			echo esc_html__( 'Please make sure you include the Font Awesome assets in some other way.', SCFA_PLUGINLANG_SLUG );
+			echo '</div>';
 		}
 		echo '<form method="post" action="options.php">';
 		settings_fields( 'scfa-settings' );
@@ -162,42 +162,42 @@ class scfa_Admin {
 		echo '</form>';
 
 		echo '<div style="background: rgba(220,220,220,0.95); color: black; border: 2px solid #888; margin-top: 20px; padding: 5px;">';
-		echo '<h2>' . esc_html__( 'Quick reference', 'scfa' ) . '</h2>';
-		echo '<p>' . esc_html__( 'This is intended as a quick reference for the shortcode. For a complete list of Font Awesome classes, please see', 'scfa').
-		     ' <a href="https://fontawesome.com" target="_blank">fontawesome.com</a>. '.
-			 '<i>' . esc_html__( 'Some icon styles may only be available with a Pro license', 'scfa').'</i>'.
-			 '. '.
-			 esc_html__( 'You can (obviously) specify everything class related in the class="" parameter if that is more convenient for you', 'scfa').
+		echo '<h2>' . esc_html__( 'Quick reference', SCFA_PLUGINLANG_SLUG ) . '</h2>';
+		echo '<p>' . esc_html__( 'This is intended as a quick reference for the shortcode. For a complete list of Font Awesome classes, please see', SCFA_PLUGINLANG_SLUG ).
+		     ' <a href="https://fontawesome.com" target="_blank">fontawesome.com</a>. ' .
+			 '<i>' . esc_html__( 'Some icon styles may only be available with a Pro license', SCFA_PLUGINLANG_SLUG ) . '</i>' .
+			 '. ' .
+			 esc_html__( 'You can (obviously) specify everything class related in the class="" parameter if that is more convenient for you', SCFA_PLUGINLANG_SLUG ) .
 			 '.</p>';
-		echo '<h3>' . esc_html__( 'General format', 'scfa' ) . '</h3>';
+		echo '<h3>' . esc_html__( 'General format', SCFA_PLUGINLANG_SLUG ) . '</h3>';
 		//Basic usage
 		echo '<p>'.
-		     esc_html__( 'Generate <span> element with icon and default (icon) style:', 'scfa').
+		     esc_html__( 'Generate <span> element with icon and default (icon) style:', SCFA_PLUGINLANG_SLUG ).
 		     '<br/><pre>  ' . esc_html( '[scfa icon="address-book"][/scfa]' ).
 		     '</pre></p>';
 		//Basic usage with style
 		echo '<p>'.
-		     esc_html__( 'Generate <span> element with the specified style and icon:', 'scfa').
+		     esc_html__( 'Generate <span> element with the specified style and icon:', SCFA_PLUGINLANG_SLUG ).
 		     '<br/><pre>  ' . esc_html( '[scfa icon="far address-book"][/scfa]' ).
 		     '</pre></p>';
 		//Show size usage
 		echo '<p>'.
-		     esc_html__( 'Generate <span> element with the specified style and icon and size:', 'scfa').
+		     esc_html__( 'Generate <span> element with the specified style and icon and size:', SCFA_PLUGINLANG_SLUG ).
 		     '<br/><pre>  ' . esc_html( '[scfa icon="far address-book" size="5x"][/scfa]' ).
 		     '</pre></p>';
 		//Show basic with additional css
 		echo '<p>'.
-		     esc_html__( 'Generate <span> element with the specified style and icon and custom CSS:', 'scfa').
+		     esc_html__( 'Generate <span> element with the specified style and icon and custom CSS:', SCFA_PLUGINLANG_SLUG ) .
 		     '<br/><pre>  ' . esc_html( '[scfa icon="fas address-book" css="font-size:20px;color:blue;"][/scfa]' ).
 		     '</pre></p>';
 		//Show basic with additional class
 		echo '<p>'.
-		     esc_html__( 'Generate <span> element with the specified style and icon and custom class:', 'scfa').
+		     esc_html__( 'Generate <span> element with the specified style and icon and custom class:', SCFA_PLUGINLANG_SLUG ) .
 		     '<br/><pre>  ' . esc_html( '[scfa icon="far address-book" class="fa-pull-right myotherclass"][/scfa]' ).
 		     '</pre></p>';
 		//Show basic with fixed width
 		echo '<p>'.
-		     esc_html__( 'Generate <span> element with the specified style and icon and fixed width:', 'scfa').
+		     esc_html__( 'Generate <span> element with the specified style and icon and fixed width:', SCFA_PLUGINLANG_SLUG ) .
 		     '<br/><pre>  ' . esc_html( '[scfa icon="fas address-book" fixed="1"][/scfa]' ).
 		     '</pre></p>';
 		echo '</div>';
@@ -211,7 +211,7 @@ class scfa_Admin {
 		if ( ! current_user_can( 'manage_options' ) )  {
 			return;
 		}
-		add_options_page( __( 'SCFA settings', 'scfa' ),
+		add_options_page( esc_html__( 'SCFA settings', SCFA_PLUGINLANG_SLUG ),
 						 'SCFA',
 					     'manage_options',
 					     'scfa',
@@ -224,10 +224,10 @@ class scfa_Admin {
 	 */
 	public function register_scfa_settings() {
 		// Add section
-		add_settings_section( 'scfa_section_1', 'Shortcode Font Awesome settings', false, 'scfa-settings' );
+		add_settings_section( 'scfa_section_1', esc_html__( 'URL settings', SCFA_PLUGINLANG_SLUG ), false, 'scfa-settings' );
 		// Add fields asset URL
 		add_settings_field( 'scfa-asset-url',
-						    '<label for="scfa-asset-url">' . esc_html__( 'Asset URL', 'scfa' ) . '</label>',
+						    '<label for="scfa-asset-url">' . esc_html__( 'Asset URL', SCFA_PLUGINLANG_SLUG ) . '</label>',
 							[ $this, 'paint_setting_field' ],
 							'scfa-settings',
 							'scfa_section_1',
@@ -236,21 +236,21 @@ class scfa_Admin {
 								'class'       => 'row',
 								'label'       => '',
 								'type'        => 'text',
-								'placeholder' => __( 'Enter a valid URL for the CSS or JS file to be used', 'scfa' ),
+								'placeholder' => __( 'Enter a valid URL for the CSS or JS file to be used', SCFA_PLUGINLANG_SLUG ),
 								'helper'      => '',
 								'desc'        => __( 'The URL of a Font Awesome CSS or JS file to be included when your site loads. '.
 													 'Leave empty to use included Font Awesome CSS resources. '.
 													 'If this is configured correctly, you will see some Font Awesome icons '.
-													 'below the SCFA header on this page.', 'scfa' ),
+													 'below the SCFA header on this page.', SCFA_PLUGINLANG_SLUG ),
 								'default'     => '',
 								'size'        => 60,
 								'maxlength'   => 255,
 							)
 						   );
 		// Add section
-		add_settings_section( 'scfa_section_2', __( 'Other settings', 'scfa' ), false, 'scfa-settings' );
+		add_settings_section( 'scfa_section_2', __( 'Other settings', SCFA_PLUGINLANG_SLUG ), false, 'scfa-settings' );
 		add_settings_field( 'scfa-asset-type',
-						    '<label for="scfa-asset-type">' . __( 'Asset type', 'scfa' ) . '</label>',
+						    '<label for="scfa-asset-type">' . __( 'Asset type', SCFA_PLUGINLANG_SLUG ) . '</label>',
 							[ $this, 'paint_setting_field' ],
 							'scfa-settings',
 							'scfa_section_2',
@@ -259,19 +259,19 @@ class scfa_Admin {
 								'class'       => 'row',
 								'type'        => 'radio',
 								'options'     => array (
-													1 => __( 'Serve local Font Awesome CSS', 'scfa' ),
-													2 => __( 'Serve asset URL as CSS', 'scfa' ),
-													3 => __( 'Serve asset URL as Font Awesome CDN kit', 'scfa' ),
-													4 => __( 'None of the above, Font Awesome is activated elsewhere', 'scfa' ),
+													1 => __( 'Serve local Font Awesome CSS', SCFA_PLUGINLANG_SLUG ),
+													2 => __( 'Serve asset URL as CSS', SCFA_PLUGINLANG_SLUG ),
+													3 => __( 'Serve asset URL as Font Awesome CDN kit', SCFA_PLUGINLANG_SLUG ),
+													4 => __( 'None of the above, Font Awesome is activated elsewhere', SCFA_PLUGINLANG_SLUG ),
 												 ),
-								'desc'        => __( 'How the asset URL (above) should be used', 'scfa' ),
+								'desc'        => __( 'How the asset URL (above) should be used', SCFA_PLUGINLANG_SLUG ),
 								'helper'      => '',
 								'default'     => 1,
 								'value'       => $this->scfa_asset_type,
 							)
 						   );
 		add_settings_field( 'scfa-default-style',
-						    '<label for="scfa-asset-type">' . __( 'Default style', 'scfa' ) . '</label>',
+						    '<label for="scfa-asset-type">' . __( 'Default style', SCFA_PLUGINLANG_SLUG ) . '</label>',
 							[ $this, 'paint_setting_field' ],
 							'scfa-settings',
 							'scfa_section_2',
@@ -285,14 +285,14 @@ class scfa_Admin {
 													3 => 'Light (fal)',
 													4 => 'Duotone (fad)',
 												 ),
-								'desc'        => __( 'Default icon style if not specified', 'scfa' ),
+								'desc'        => __( 'Default icon style if not specified', SCFA_PLUGINLANG_SLUG ),
 								'helper'      => '',
 								'default'     => 1,
 								'value'       => $this->scfa_default_style,
 							)
 						   );
 		add_settings_field( 'scfa-remove-settings',
-						    '<label for="scfa-remove-settings">' . __( 'Remove settings', 'scfa' ) . '</label>',
+						    '<label for="scfa-remove-settings">' . __( 'Remove settings', SCFA_PLUGINLANG_SLUG ) . '</label>',
 							[ $this, 'paint_setting_field' ],
 							'scfa-settings',
 							'scfa_section_2',
@@ -300,7 +300,7 @@ class scfa_Admin {
 								'name'        => 'scfa-remove-settings',
 								'class'       => 'row',
 								'type'        => 'checkbox',
-								'desc'        => __( 'Remove all SCFA plugin settings and data when plugin is uninstalled.', 'scfa' ),
+								'desc'        => __( 'Remove all SCFA plugin settings and data when plugin is uninstalled.', SCFA_PLUGINLANG_SLUG ),
 								'default'     => '0',
 							)
 						   );

@@ -1,12 +1,12 @@
 <?php
 /**
- * Public-facing functionality of the plugin.
+ * Public-facing functionality of SCFA
  *
  * @package    SCFA
  * @subpackage SCFA/public
  * @author     Joaquim Homrighausen <joho@webbplatsen.se>
  *
- * class-scfa-public.php
+ * class-scfa-public.php (Shortcodes for Font Awesome)
  * Copyright (C) 2020 Joaquim Homrighausen
  *
  * This file is part of SCFA. SCFA is free software.

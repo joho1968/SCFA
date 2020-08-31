@@ -7,7 +7,7 @@
  * @package           SCFA
  * @author            Joaquim Homrighausen <joho@webbplatsen.se>
  *
- * uninstall.php
+ * uninstall.php (Shortcodes for Font Awesome)
  * Copyright (C) 2020 Joaquim Homrighausen
  *
  * This file is part of SCFA. SCFA is free software.
@@ -37,7 +37,7 @@ if ( empty( $_REQUEST['action'] ) || $_REQUEST['action'] !== 'delete-plugin' ) {
 	exit;
 }
 // If it's not us, then exit
-if ( empty( $_REQUEST['slug'] ) || $_REQUEST['slug'] !== 'scfa' ) {
+if ( empty( $_REQUEST['slug'] ) || $_REQUEST['slug'] !== 'shortcodes-for-font-awesome' ) {
 	exit;
 }
 // If we shouldn't do this, then exit

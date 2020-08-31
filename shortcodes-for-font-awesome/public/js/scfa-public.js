@@ -2,7 +2,7 @@
 	'use strict';
 
 	/**
-     * scfa-public.js
+     * scfa-public.js (Shortcodes for Font Awesome)
      *
      * This file is part of SCFA. SCFA is free software.
      *

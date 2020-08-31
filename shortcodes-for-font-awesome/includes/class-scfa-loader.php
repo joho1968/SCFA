@@ -1,13 +1,13 @@
 <?php
 /**
- * Register all actions and filters for the plugin
+ * Register all actions and filters for SCFA
  *
  * @since      1.0.0
  * @package    SCFA
  * @subpackage scfa/includes
  * @author     Joaquim Homrighausen <joho@webbplatsen.se>
  *
- * class-scfa-loader.php
+ * class-scfa-loader.php (Shortcodes for Font Awesome)
  * Copyright (C) 2020 Joaquim Homrighausen
  *
  * This file is part of SCFA. SCFA is free software.

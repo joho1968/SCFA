@@ -1,6 +1,6 @@
 <?php
 /**
- * Provide a public-facing view for the plugin
+ * Provide a public-facing view for SCFA
  *
  * This file is part of SCFA.
  */
