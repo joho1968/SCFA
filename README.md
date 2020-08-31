@@ -4,7 +4,7 @@ Shortcode Font Awesome (SCFA) is a WordPress plugin to generate inline HTML with
 
 ## Description
 
-SCFA generates inline HTML for Font Awesome icons.
+SCFA generates inline HTML for Font Awesome icons. The WordPress slug is `shortcodes-for-font-awesome`.
 
 A few notes about this plugin:
 
@@ -19,7 +19,7 @@ A few notes about this plugin:
 
 This section describes how to install the plugin and get it working.
 
-1. Upload the contents of the `scfa` folder to the `/wp-content/plugins/` directory
+1. Upload the contents of the `shortcodes-for-font-awesome` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Configure accordingly
 
