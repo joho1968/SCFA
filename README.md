@@ -1,6 +1,6 @@
 # SCFA
 
-Shortcode Font Awesome (SCFA) is a WordPress plugin to generate inline HTML with Font Awesome icon libray.
+Shortcodes for Font Awesome (SCFA) is a WordPress plugin to generate inline HTML with Font Awesome icon libray.
 
 ## Description
 
@@ -14,6 +14,7 @@ A few notes about this plugin:
 * You may choose to disable Font Awesome assets if you include them elsewhere
 * This plugin may create entries in your PHP error log (if active)
 * This plugin contains no tracking code and does not process or collect any information about the visitor
+* This plugin has been tested with WordPress up to 5.5.1
 
 ## Installation
 
@@ -73,11 +74,11 @@ Please see LICENSE.TXT for a full copy of GPLv2
 
 Copyright (C) 2020 [Joaquim Homrighausen](https://github.com/joho1968).
 
-This file is part of SCFA. SCFA is free software.
+This file is part of Shortcodes for Font Awesome (SCFA). Shortcodes for Font Awesome is free software.
 
 You may redistribute it and/or modify it under the terms of the GNU General Public License version 2, as published by the Free Software Foundation.
 
-SCFA is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+Shortcodes for Font Awesome is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with the SCFA package. If not, write to:
 
@@ -89,7 +90,7 @@ Boston, MA  02110-1301, USA.
 
 ## Credits
 
-The SCFA WordPress Plugin is based on the **WordPress Plugin Boilerplate**, as a starting point. The SCFA WordPress Plugin was written by [Joaquim Homrighausen](https://github.com/joho1968).
+The Shortcodes for Font Awesome WordPress Plugin is based on the **WordPress Plugin Boilerplate**, as a starting point. The Shortcodes for Font Awesome WordPress Plugin was written by [Joaquim Homrighausen](https://github.com/joho1968).
 
 The WordPress Plugin Boilerplate was started in 2011 by [Tom McFarlin](http://twitter.com/tommcfarlin/) and has since included a number of great contributions. In March of 2015 the project was handed over by Tom to Devin Vinson.
 
