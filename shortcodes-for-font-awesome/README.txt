@@ -1,5 +1,5 @@
 === SCFA (Shortcodes for Font Awesome) ===
-Contributors: joho68
+Contributors: joho68, webbplatsen
 Donate link: https://www.joho.se/scfa/
 Tags: font awesome, fontawesome, webfont, font, icon, shortcode
 Requires at least: 5.0.0
