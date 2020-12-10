@@ -39,7 +39,7 @@ class scfa {
 		if ( defined( 'SCFA_VERSION' ) ) {
 			$this->version = SCFA_VERSION;
 		} else {
-			$this->version = '1.0.0';
+			$this->version = '1.1.0';
 		}
 		$this->plugin_name = SCFA_PLUGINNAME_SLUG;
 

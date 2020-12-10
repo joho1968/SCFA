@@ -1,10 +1,10 @@
 === SCFA (Shortcodes for Font Awesome) ===
 Contributors: joho68, webbplatsen
-Donate link: https://www.joho.se/scfa/
-Tags: font awesome, fontawesome, webfont, font, icon, shortcode
+Donate link: https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/
+Tags: font awesome, fontawesome, webfont, font, icon
 Requires at least: 5.0.0
-Tested up to: 5.5.1
-Stable tag: 1.0.0
+Tested up to: 5.6.0
+Stable tag: 1.1.0
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -25,6 +25,7 @@ A few notes about this plugin:
 *   You may choose to disable Font Awesome assets if you include them elsewhere
 *   This plugin may create entries in your PHP error log (if active)
 *   This plugin contains no tracking code and does not process or collect any information about the visitor
+*   Tested with PHP 7.2 and PHP 7.4
 
 == Installation ==
 
@@ -70,15 +71,27 @@ You can replace all of the Font Awesome files in the public/css directory with a
 
 == Changelog ==
 
+= 1.1.0 =
+* Upgraded to FontAwesome 5.15.1
+* Tested with PHP 7.4
+* Tested plugin with WordPress 5.6
+
 = 1.0.0 =
 * Initial release
 
 == Upgrade Notice ==
 
+= 1.1.0 =
+Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
+
 = 1.0.0 =
 Initial release
 
 == Credits ==
+
+Development sponsored by [WebbPlatsen i Sverige AB](https://www.webbplatsen.se)
+
+This plugin can also be downloaded from [code.webbplatsen.net](https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/) and [GitHub](https://github.com/joho1968/SCFA)
 
 The SCFA WordPress Plugin is based on the WordPress Plugin Boilerplate, as a starting point. The SCFA WordPress Plugin was written by Joaquim Homrighausen.
 
@@ -91,4 +104,4 @@ You may also like the WordPress Plugin Boilerplate generator: https://wppb.me/
 
 Font Awesome: https://fontawesome.com
 
-Development sponsored by WebbPlatsen i Sverige AB: https://www.webbplatsen.se
+Stay safe!

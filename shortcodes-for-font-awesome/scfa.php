@@ -11,7 +11,7 @@
  * Plugin Name:       Shortcodes for Font Awesome
  * Plugin URI:        https://github.com/joho1968/SCFA
  * Description:       Generate inline HTML for Font Awesome using shortcodes
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            Joaquim Homrighausen <joho@webbplatsen.se>
  * Author URI:        https://github.com/joho1968/
  * License:           GPL-2.0+
@@ -48,7 +48,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Current plugin version.
  */
-define( 'SCFA_VERSION', '1.0.0' );
+define( 'SCFA_VERSION', '1.1.0' );
 define( 'SCFA_PLUGINNAME_HUMAN', 'SCFA' );
 define( 'SCFA_PLUGINNAME_SLUG',  'shortcodes-for-font-awesome' );
 define( 'SCFA_PLUGINLANG_SLUG',  'shortcodes-for-font-awesome' );

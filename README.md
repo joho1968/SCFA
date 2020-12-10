@@ -16,7 +16,8 @@ A few notes about this plugin:
 * You may choose to disable Font Awesome assets if you include them elsewhere
 * This plugin may create entries in your PHP error log (if active)
 * This plugin contains no tracking code and does not process or collect any information about the visitor
-* This plugin has been tested with WordPress up to 5.5.1
+* This plugin has been tested with WordPress up to 5.6.0
+* This plugin has been tested with PHP 7.2 and PHP 7.4
 
 ## Installation
 
@@ -62,10 +63,18 @@ You can replace all of the Font Awesome files in the `public/css` directory with
 
 ## Changelog
 
+### 1.1.0
+* Upgraded to FontAwesome 5.15.1
+* Tested with PHP 7.4
+* Tested plugin with WordPress 5.6
+
 ### 1.0.0
 * Initial release
 
 ## Upgrade Notice
+
+### 1.1.0
+* Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
 
 ### 1.0.0
 * Initial release
@@ -92,6 +101,10 @@ Boston, MA  02110-1301, USA.
 
 ## Credits
 
+Development sponsored by [WebbPlatsen i Sverige AB](https://www.webbplatsen.se). Commercial support is available from WebbPlatsen i Sverige AB.
+
+This plugin can also be downloaded from [code.webbplatsen.net](https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/) and [GitHub](https://github.com/joho1968/SCFA)
+
 The Shortcodes for Font Awesome WordPress Plugin is based on the **WordPress Plugin Boilerplate**, as a starting point. The Shortcodes for Font Awesome WordPress Plugin was written by [Joaquim Homrighausen](https://github.com/joho1968).
 
 The WordPress Plugin Boilerplate was started in 2011 by [Tom McFarlin](http://twitter.com/tommcfarlin/) and has since included a number of great contributions. In March of 2015 the project was handed over by Tom to Devin Vinson.
@@ -102,6 +115,4 @@ You can get the WordPress Plugin Boilerplate [here](http://wppb.io/). You may al
 
 [Font Awesome](https://fontawesome.com) for their awesome icons!
 
-Development sponsored by [WebbPlatsen i Sverige AB](https://www.webbplatsen.se)
-
-Commercial support is available through WebbPlatsen i Sverige AB.
+Stay safe!
