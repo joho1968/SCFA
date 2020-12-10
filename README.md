@@ -101,7 +101,9 @@ Boston, MA  02110-1301, USA.
 
 ## Credits
 
-Development sponsored by [WebbPlatsen i Sverige AB](https://www.webbplatsen.se). Commercial support is available from WebbPlatsen i Sverige AB.
+Development sponsored by [WebbPlatsen i Sverige AB](https://www.webbplatsen.se).
+
+Commercial support is available from WebbPlatsen i Sverige AB.
 
 This plugin can also be downloaded from [code.webbplatsen.net](https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/) and [GitHub](https://github.com/joho1968/SCFA)
 
