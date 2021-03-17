@@ -109,9 +109,9 @@ Boston, MA  02110-1301, USA.
 
 ## Credits
 
-The Fail2WP WordPress Plugin was written by Joaquim Homrighausen while converting :coffee: into code.
+The Shortcodes for Font Awesome (SCFA) WordPress Plugin was written by Joaquim Homrighausen while converting :coffee: into code.
 
-Fail2WP is sponsored by [WebbPlatsen i Sverige AB](https://webbplatsen.se), Stockholm, :sweden:
+SCFA is sponsored by [WebbPlatsen i Sverige AB](https://webbplatsen.se), Stockholm, :sweden:
 
 Commercial support and customizations for this plugin is available from WebbPlatsen i Sverige AB in Stockholm, :sweden:
 
