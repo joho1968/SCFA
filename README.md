@@ -1,3 +1,5 @@
+[![Software License](https://img.shields.io/badge/License-GPL%20v2-green.svg?style=flat-square)](LICENSE) [![PHP 7.2\+](https://img.shields.io/badge/PHP-7.2-blue?style=flat-square)](https://php.net) [![PHP 7.4\+](https://img.shields.io/badge/PHP-7.4-blue?style=flat-square)](https://php.net) [![WordPress 5](https://img.shields.io/badge/WordPress-5.7-orange?style=flat-square)](https://wordpress.org)
+
 # SCFA
 
 Shortcodes for Font Awesome (SCFA) is a WordPress plugin to generate inline HTML with Font Awesome icon libray.
