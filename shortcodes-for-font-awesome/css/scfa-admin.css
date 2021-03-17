@@ -1,0 +1,34 @@
+/**
+ * SCFA CSS
+ */
+
+.scfa-role-option {
+    display: inline;
+    float: left;
+    padding-right: 5px;
+}
+.scfa-config-header {
+	padding: 20px 10px;
+	border-top: 5px solid #35537a;
+	background: #fff;
+}
+.scfa-config-section {
+	margin-top: 15px;
+	padding: 25px 10px;
+	color: #000;
+	background: #fff;
+}
+.scfa-ext-link {
+  color: #007bff;
+  text-decoration: none;
+}
+img.scfa-wps-logo {
+    display: inline-block;
+    float: left;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    margin-left: 10px;
+    max-width: 100px;
+    height: auto;
+}
+

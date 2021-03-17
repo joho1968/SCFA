@@ -2,13 +2,13 @@
 /**
  * SCFA Plugin is uninstalled.
  *
- * @link              https://github.com/joho1968/SCFA
- * @since             1.0.0
- * @package           SCFA
- * @author            Joaquim Homrighausen <joho@webbplatsen.se>
+ * @link    https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/
+ * @since   1.0.0
+ * @package SCFA
+ * @author  Joaquim Homrighausen <joho@webbplatsen.se>
  *
  * uninstall.php (Shortcodes for Font Awesome)
- * Copyright (C) 2020 Joaquim Homrighausen
+ * Copyright (C) 2020, 2021 Joaquim Homrighausen
  *
  * This file is part of SCFA. SCFA is free software.
  *
@@ -45,11 +45,10 @@ if ( ! current_user_can( 'manage_options' ) || ! current_user_can( 'delete_plugi
 	exit;
 }
 
-
 // Figure out if an uninstall should remove plugin settings.
-
 $remove_settings = get_option( 'scfa-remove-settings', '0' );
 
+// Possibly remove our settings
 if ( $remove_settings == '1' ) {
 	// scfa plugin options
 	delete_option( 'scfa-asset-url' );

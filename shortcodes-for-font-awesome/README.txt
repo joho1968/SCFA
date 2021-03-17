@@ -3,8 +3,8 @@ Contributors: joho68, webbplatsen
 Donate link: https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/
 Tags: font awesome, fontawesome, webfont, font, icon
 Requires at least: 5.0.0
-Tested up to: 5.6.0
-Stable tag: 1.1.0
+Tested up to: 5.7.0
+Stable tag: 1.2.0
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -25,6 +25,7 @@ A few notes about this plugin:
 *   You may choose to disable Font Awesome assets if you include them elsewhere
 *   This plugin may create entries in your PHP error log (if active)
 *   This plugin contains no tracking code and does not process or collect any information about the visitor
+*   Tested with WordPress 5.5, 5.6, and 5.7
 *   Tested with PHP 7.2 and PHP 7.4
 
 == Installation ==
@@ -37,7 +38,7 @@ This section describes how to install the plugin and get it working.
 
 == Configuration ==
 
-Decide if you want to use the included Font Awesome assets, they are the time of this writing at version 5.2.4. If you want to use another version, you can replace the included assets, use another URL for the CSS and webfont assets, or specify a Font Awesome CDN kit URL.
+Decide if you want to use the included Font Awesome assets, they are the time of this writing at version 5.15.2. If you want to use another version, you can replace the included assets, use another URL for the CSS and webfont assets, or specify a Font Awesome CDN kit URL.
 
 == Usage ==
 
@@ -67,9 +68,15 @@ There are more examples in the SCFA plugin settings screen.
 
 = How to make local customizations =
 
-You can replace all of the Font Awesome files in the public/css directory with an updated version of Font Awesome. Please note that the webfonts from Font Awesome go into the webfonts/ folder.
+You can replace all of the Font Awesome files in the css/ sub-directory with an updated version of Font Awesome. Please note that the webfonts from Font Awesome go into the css/webfonts/ sub-directory.
 
 == Changelog ==
+
+= 1.2.0 =
+* Upgraded to FontAwesome 5.15.2
+* Tested plugin with WordPress 5.7
+* Refactored code and removed all WordPress Plugin Boilerplate code
+* Removed non-minified CSS assets
 
 = 1.1.0 =
 * Upgraded to FontAwesome 5.15.1
@@ -81,6 +88,9 @@ You can replace all of the Font Awesome files in the public/css directory with a
 
 == Upgrade Notice ==
 
+= 1.2.0 =
+Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
+
 = 1.1.0 =
 Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
 
@@ -89,19 +99,12 @@ Initial release
 
 == Credits ==
 
-Development sponsored by [WebbPlatsen i Sverige AB](https://www.webbplatsen.se)
+The Shortcodes for Font Awesome Plugin was written by Joaquim Homrighausen while converting caffeine into code.
+
+Shortcodes for Font Awesome is sponsored by [WebbPlatsen i Sverige AB](https://www.webbplatsen.se), Stockholm, Sweden.
 
 This plugin can also be downloaded from [code.webbplatsen.net](https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/) and [GitHub](https://github.com/joho1968/SCFA)
 
-The SCFA WordPress Plugin is based on the WordPress Plugin Boilerplate, as a starting point. The SCFA WordPress Plugin was written by Joaquim Homrighausen.
-
-The WordPress Plugin Boilerplate was started in 2011 by [Tom McFarlin](http://twitter.com/tommcfarlin/) and has since included a number of great contributions. In March of 2015 the project was handed over by Tom to Devin Vinson.
-
-The current version of the Boilerplate was developed in conjunction with [Josh Eaton](https://twitter.com/jjeaton), [Ulrich Pogson](https://twitter.com/grapplerulrich), and [Brad Vincent](https://twitter.com/themergency).
-
-You can get the WordPress Plugin Boilerplate here: http://wppb.io/
-You may also like the WordPress Plugin Boilerplate generator: https://wppb.me/
-
-Font Awesome: https://fontawesome.com
+[Font Awesome](https://fontawesome.com)
 
 Stay safe!

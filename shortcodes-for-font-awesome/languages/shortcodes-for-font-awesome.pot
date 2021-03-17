@@ -1,15 +1,15 @@
 # SCFA Language Template File (.POT)
-# Copyright (C) 2020 Joaquim Homrighausen
+# Copyright (C) 2020, 2021 Joaquim Homrighausen
 # This file is distributed under the same license as the SCFA package.
 # Joaquim Homrighausen <joho@webbplatsen.se>, 2020
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: SCFA 1.1.0\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-25 10:48+0200\n"
-"PO-Revision-Date: 2020-08-31 11:55+0200\n"
+"POT-Creation-Date: 2020-03-17 13:50+0200\n"
+"PO-Revision-Date: 2021-03-17 13:54+0100\n"
 "Last-Translator: Joaquim Homrighausen <joho@webbplatsen.se>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en_US\n"
@@ -17,98 +17,141 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-# Description
-msgid "Generate inline HTML for Font Awesome using shortcodes"
+#: scfa.php:236
+msgid "SCFA settings"
 msgstr ""
 
-# URL settings
-msgid "URL settings"
+#: scfa.php:252
+msgid "Settings"
 msgstr ""
 
-#: admin/class-scfa-admin.php:131 admin/class-scfa-admin.php:131
-msgid "Insert SCFA"
+#: scfa.php:279
+msgid "Configuration"
 msgstr ""
 
-#: admin/class-scfa-admin.php:152 admin/class-scfa-admin.php:152
-msgid ""
-"Please note that to serve the specified asset URL as CSS, Font Awesome "
-"expects to be able to include web fonts relative to the URL you specify."
+#: scfa.php:282
+msgid "Quickguide"
 msgstr ""
 
-#: admin/class-scfa-admin.php:153 admin/class-scfa-admin.php:153
-msgid ""
-"If you specify https://mysite.com/assets/css/all.min.css, Font Awesome will "
-"attempt to include web fonts from https://mysite.com/assets/webfonts/..."
+#: scfa.php:285
+msgid "About"
 msgstr ""
 
-#: admin/class-scfa-admin.php:157 admin/class-scfa-admin.php:157
-msgid "Please make sure you include the Font Awesome assets in some other way."
-msgstr ""
-
-#: admin/class-scfa-admin.php:167 admin/class-scfa-admin.php:167
-msgid "Quick reference"
-msgstr ""
-
-#: admin/class-scfa-admin.php:168 admin/class-scfa-admin.php:168
+#: scfa.php:296
 msgid ""
 "This is intended as a quick reference for the shortcode. For a complete list "
 "of Font Awesome classes, please see"
 msgstr ""
 
-#: admin/class-scfa-admin.php:170 admin/class-scfa-admin.php:170
+#: scfa.php:298
 msgid "Some icon styles may only be available with a Pro license"
 msgstr ""
 
-#: admin/class-scfa-admin.php:172 admin/class-scfa-admin.php:172
+#: scfa.php:300
 msgid ""
 "You can (obviously) specify everything class related in the class=\"\" "
 "parameter if that is more convenient for you"
 msgstr ""
 
-#: admin/class-scfa-admin.php:174 admin/class-scfa-admin.php:174
+#: scfa.php:302
 msgid "General format"
 msgstr ""
 
-#: admin/class-scfa-admin.php:177 admin/class-scfa-admin.php:177
+#: scfa.php:304
 msgid "Generate <span> element with icon and default (icon) style:"
 msgstr ""
 
-#: admin/class-scfa-admin.php:182 admin/class-scfa-admin.php:182
+#: scfa.php:307
 msgid "Generate <span> element with the specified style and icon:"
 msgstr ""
 
-#: admin/class-scfa-admin.php:187 admin/class-scfa-admin.php:187
+#: scfa.php:310
 msgid "Generate <span> element with the specified style and icon and size:"
 msgstr ""
 
-#: admin/class-scfa-admin.php:192 admin/class-scfa-admin.php:192
+#: scfa.php:313
 msgid ""
 "Generate <span> element with the specified style and icon and custom CSS:"
 msgstr ""
 
-#: admin/class-scfa-admin.php:197 admin/class-scfa-admin.php:197
+#: scfa.php:316
 msgid ""
 "Generate <span> element with the specified style and icon and custom class:"
 msgstr ""
 
-#: admin/class-scfa-admin.php:202 admin/class-scfa-admin.php:202
+#: scfa.php:319
 msgid ""
 "Generate <span> element with the specified style and icon and fixed width:"
 msgstr ""
 
-#: admin/class-scfa-admin.php:217 admin/class-scfa-admin.php:217
-msgid "SCFA settings"
+#: scfa.php:326
+msgid ""
+"Please note that to serve the specified asset URL as CSS, Font Awesome "
+"expects to be able to include web fonts relative to the URL you specify."
 msgstr ""
 
-#: admin/class-scfa-admin.php:233 admin/class-scfa-admin.php:233
+#: scfa.php:328
+msgid ""
+"If you specify https://mysite.com/assets/css/all.min.css, Font Awesome will "
+"attempt to include web fonts from https://mysite.com/assets/webfonts/..."
+msgstr ""
+
+#: scfa.php:333
+msgid "Please make sure you include the Font Awesome assets in some other way."
+msgstr ""
+
+#: scfa.php:361
+msgid "Thank you for installing"
+msgstr ""
+
+#: scfa.php:362
+msgid "This plugin provides a simple way to include"
+msgstr ""
+
+#: scfa.php:364
+msgid "on your WordPress site"
+msgstr ""
+
+#: scfa.php:368
+msgid "Commercial support and customizations for this plugin is available from"
+msgstr ""
+
+#: scfa.php:370
+msgid "in Stockholm, Sweden. We speak Swedish and English"
+msgstr ""
+
+#: scfa.php:372
+msgid ""
+"The plugin was written by Joaquim Homrighausen and sponsored by WebbPlatsen "
+"i Sverige AB."
+msgstr ""
+
+#: scfa.php:374
+msgid ""
+"If you find this plugin useful, the author is happy to receive a donation, "
+"good review, or just a kind word."
+msgstr ""
+
+#: scfa.php:375
+msgid ""
+"If there is something you feel to be missing from this plugin, or if you "
+"have found a problem with the code or a feature, please do not hesitate to "
+"reach out to"
+msgstr ""
+
+#: scfa.php:392
+msgid "URL settings"
+msgstr ""
+
+#: scfa.php:395
 msgid "Asset URL"
 msgstr ""
 
-#: admin/class-scfa-admin.php:242 admin/class-scfa-admin.php:242
+#: scfa.php:404
 msgid "Enter a valid URL for the CSS or JS file to be used"
 msgstr ""
 
-#: admin/class-scfa-admin.php:244 admin/class-scfa-admin.php:244
+#: scfa.php:406
 msgid ""
 "The URL of a Font Awesome CSS or JS file to be included when your site "
 "loads. Leave empty to use included Font Awesome CSS resources. If this is "
@@ -116,46 +159,50 @@ msgid ""
 "header on this page."
 msgstr ""
 
-#: admin/class-scfa-admin.php:254 admin/class-scfa-admin.php:254
+#: scfa.php:416
 msgid "Other settings"
 msgstr ""
 
-#: admin/class-scfa-admin.php:256 admin/class-scfa-admin.php:256
+#: scfa.php:418
 msgid "Asset type"
 msgstr ""
 
-#: admin/class-scfa-admin.php:270 admin/class-scfa-admin.php:270
-msgid "How the asset URL (above) should be used"
-msgstr ""
-
-#: admin/class-scfa-admin.php:277 admin/class-scfa-admin.php:277
-msgid "Default style"
-msgstr ""
-
-#: admin/class-scfa-admin.php:291 admin/class-scfa-admin.php:291
-msgid "Default icon style if not specified"
-msgstr ""
-
-#: admin/class-scfa-admin.php:298 admin/class-scfa-admin.php:298
-msgid "Remove settings"
-msgstr ""
-
-#: admin/class-scfa-admin.php:306 admin/class-scfa-admin.php:306
-msgid "Remove all SCFA plugin settings and data when plugin is uninstalled."
-msgstr ""
-
-#: admin/class-scfa-admin.php:265
+#: scfa.php:427
 msgid "Serve local Font Awesome CSS"
 msgstr ""
 
-#: admin/class-scfa-admin.php:266
+#: scfa.php:428
 msgid "Serve asset URL as CSS"
 msgstr ""
 
-#: admin/class-scfa-admin.php:267
+#: scfa.php:429
 msgid "Serve asset URL as Font Awesome CDN kit"
 msgstr ""
 
-#: admin/class-scfa-admin.php:268
+#: scfa.php:430
 msgid "None of the above, Font Awesome is activated elsewhere"
+msgstr ""
+
+#: scfa.php:432
+msgid "How the asset URL (above) should be used"
+msgstr ""
+
+#: scfa.php:439
+msgid "Default style"
+msgstr ""
+
+#: scfa.php:453
+msgid "Default icon style if not specified"
+msgstr ""
+
+#: scfa.php:460
+msgid "Remove settings"
+msgstr ""
+
+#: scfa.php:468
+msgid "Remove all SCFA plugin settings and data when plugin is uninstalled."
+msgstr ""
+
+#: scfa.php:627
+msgid "Insert SCFA"
 msgstr ""

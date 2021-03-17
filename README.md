@@ -16,8 +16,8 @@ A few notes about this plugin:
 * You may choose to disable Font Awesome assets if you include them elsewhere
 * This plugin may create entries in your PHP error log (if active)
 * This plugin contains no tracking code and does not process or collect any information about the visitor
-* This plugin has been tested with WordPress up to 5.6.0
-* This plugin has been tested with PHP 7.2 and PHP 7.4
+* Tested with WordPress 5.5, 5.6, and 5.7
+* Tested with PHP 7.2 and PHP 7.4
 
 ## Installation
 
@@ -59,9 +59,14 @@ There are more examples in the SCFA plugin settings screen.
 
 ### How to I make local customizations
 
-You can replace all of the Font Awesome files in the `public/css` directory with an updated version of Font Awesome. Please note that the webfonts from Font Awesome go into the `webfonts/` folder.
+You can replace all of the Font Awesome files in the `css/fontawesome/` sub-directory with an updated version of Font Awesome. Please note that the webfonts from Font Awesome go into the `css/webfonts/` sub-directory.
 
 ## Changelog
+
+### 1.2.0
+* Upgraded to FontAwesome 5.15.2
+* Tested plugin with WordPress 5.7
+* Removed BoilerPlate
 
 ### 1.1.0
 * Upgraded to FontAwesome 5.15.1
@@ -73,6 +78,9 @@ You can replace all of the Font Awesome files in the `public/css` directory with
 
 ## Upgrade Notice
 
+### 1.2.0
+* Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
+
 ### 1.1.0
 * Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
 
@@ -81,9 +89,9 @@ You can replace all of the Font Awesome files in the `public/css` directory with
 
 ## License
 
-Please see LICENSE.TXT for a full copy of GPLv2
+Please see [LICENSE](LICENSE) for a full copy of GPLv2
 
-Copyright (C) 2020 [Joaquim Homrighausen](https://github.com/joho1968).
+Copyright (C) 2020, 2021 [Joaquim Homrighausen](https://github.com/joho1968).
 
 This file is part of Shortcodes for Font Awesome (SCFA). Shortcodes for Font Awesome is free software.
 
@@ -101,20 +109,20 @@ Boston, MA  02110-1301, USA.
 
 ## Credits
 
-Development sponsored by [WebbPlatsen i Sverige AB](https://www.webbplatsen.se).
+The Fail2WP WordPress Plugin was written by Joaquim Homrighausen while converting :coffee: into code.
 
-Commercial support is available from WebbPlatsen i Sverige AB.
+Fail2WP is sponsored by [WebbPlatsen i Sverige AB](https://webbplatsen.se), Stockholm, :sweden:
 
-This plugin can also be downloaded from [code.webbplatsen.net](https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/) and [GitHub](https://github.com/joho1968/SCFA)
+Commercial support and customizations for this plugin is available from WebbPlatsen i Sverige AB in Stockholm, :sweden:
 
-The Shortcodes for Font Awesome WordPress Plugin is based on the **WordPress Plugin Boilerplate**, as a starting point. The Shortcodes for Font Awesome WordPress Plugin was written by [Joaquim Homrighausen](https://github.com/joho1968).
+This plugin can also be downloaded from [code.webbplatsen.net](https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/) and [WordPress.org](https://wordpress.org/plugins/shortcodes-for-font-awesome/)
 
-The WordPress Plugin Boilerplate was started in 2011 by [Tom McFarlin](http://twitter.com/tommcfarlin/) and has since included a number of great contributions. In March of 2015 the project was handed over by Tom to Devin Vinson.
+### External references
 
-The current version of the Boilerplate was developed in conjunction with [Josh Eaton](https://twitter.com/jjeaton), [Ulrich Pogson](https://twitter.com/grapplerulrich), and [Brad Vincent](https://twitter.com/themergency).
+These links are not here for any sort of endorsement or marketing, they're purely for informational purposes.
 
-You can get the WordPress Plugin Boilerplate [here](http://wppb.io/). You may also like the [WordPress Plugin Boilerplate generator](https://wppb.me/).
-
-[Font Awesome](https://fontawesome.com) for their awesome icons!
+* me; :monkey: https://joho.se and https://github.com/joho1968
+* WebbPlatsen; https://webbplatsen.se and https://code.webbplatsen.net
+* [Font Awesome](https://fontawesome.com) for their awesome icons!
 
 Stay safe!
