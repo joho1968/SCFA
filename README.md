@@ -1,4 +1,4 @@
-[![Software License](https://img.shields.io/badge/License-GPL%20v2-green.svg?style=flat-square)](LICENSE) [![PHP 7.2\+](https://img.shields.io/badge/PHP-7.2-blue?style=flat-square)](https://php.net) [![PHP 7.4\+](https://img.shields.io/badge/PHP-7.4-blue?style=flat-square)](https://php.net) [![WordPress 5](https://img.shields.io/badge/WordPress-5.7-orange?style=flat-square)](https://wordpress.org)
+[![Software License](https://img.shields.io/badge/License-GPL%20v2-green.svg?style=flat-square)](LICENSE) [![PHP 7.2\+](https://img.shields.io/badge/PHP-7.2-blue?style=flat-square)](https://php.net) [![PHP 7.4\+](https://img.shields.io/badge/PHP-7.4-blue?style=flat-square)](https://php.net) [![WordPress 5](https://img.shields.io/badge/WordPress-5.8-orange?style=flat-square)](https://wordpress.org)
 
 # SCFA
 
@@ -18,7 +18,7 @@ A few notes about this plugin:
 * You may choose to disable Font Awesome assets if you include them elsewhere
 * This plugin may create entries in your PHP error log (if active)
 * This plugin contains no tracking code and does not process or collect any information about the visitor
-* Tested with WordPress 5.5, 5.6, and 5.7
+* Tested with WordPress 5.5, 5.6, 5.7, and 5.8
 * Tested with PHP 7.2 and PHP 7.4
 
 ## Installation
@@ -65,6 +65,12 @@ You can replace all of the Font Awesome files in the `css/fontawesome/` sub-dire
 
 ## Changelog
 
+### 1.2.1
+* Upgraded to FontAwesome 5.15.3
+* Tested plugin with WordPress 5.8
+* Minor i18n (translation) correction
+* Minor cosmetic correction
+
 ### 1.2.0
 * Upgraded to FontAwesome 5.15.2
 * Tested plugin with WordPress 5.7
@@ -79,6 +85,9 @@ You can replace all of the Font Awesome files in the `css/fontawesome/` sub-dire
 * Initial release
 
 ## Upgrade Notice
+
+### 1.2.1
+* Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
 
 ### 1.2.0
 * Simply update the plugin via wordpress.org or download and install as per the installation instructions above.

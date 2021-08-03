@@ -11,7 +11,7 @@
  * Plugin Name:       Shortcodes for Font Awesome
  * Plugin URI:        https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/
  * Description:       Generate inline HTML for Font Awesome using shortcodes
- * Version:           1.2.0
+ * Version:           1.2.1
  * Author:            Joaquim Homrighausen <joho@webbplatsen.se>
  * Author URI:        https://github.com/joho1968/
  * License:           GPL-2.0+
@@ -51,7 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Current plugin version.
 define( 'SCFA_WORDPRESS_PLUGIN', true                          );
-define( 'SCFA_VERSION',          '1.2.0'                       );
+define( 'SCFA_VERSION',          '1.2.1'                       );
 define( 'SCFA_REV',              1                             );
 define( 'SCFA_PLUGINNAME_HUMAN', 'SCFA'                        );
 define( 'SCFA_PLUGINNAME_SLUG',  'shortcodes-for-font-awesome' );
@@ -78,12 +78,12 @@ class SCFA_Class {
 	public function __construct( string $version = '', string $slug = '' ) {
         if ( empty( $version ) ) {
             if ( defined( 'SCFA_VERSION' ) ) {
-                $this->fail2wp_plugin_version = SCFA_VERSION;
+                $this->scfa_plugin_version = SCFA_VERSION;
             } else {
-                $this->fail2wp_plugin_version = '1.0.0';
+                $this->scfa_plugin_version = '1.2.1';
             }
         } else {
-            $this->fail2wp_plugin_version = $version;
+            $this->scfa_plugin_version = $version;
         }
         if ( empty( $slug ) ) {
     		$this->plugin_name = SCFA_PLUGINNAME_SLUG;
@@ -96,7 +96,7 @@ class SCFA_Class {
         }
 
         // We only need to query this once really
-        $this->scfa_have_mbstring = extension_loaded( 'mbstring ');
+        $this->scfa_have_mbstring = extension_loaded( 'mbstring' );
         // Fetch options
 	    $this->scfa_asset_type = get_option( 'scfa-asset-type', 1 );
 	    $this->scfa_default_style = get_option( 'scfa-default-style', 1 );
@@ -186,12 +186,9 @@ class SCFA_Class {
             // Other "admin" things to do
     		add_action( 'admin_enqueue_scripts', [$this, 'scfa_setup_css'] );
             add_action( 'admin_menu',            [$this, 'scfa_admin_setup_menu'] );
-            if ( ! empty( $_GET['page'] ) && $_GET['page'] == 'scfa' ) {
-                // Only do this on our settings page
-                add_action( 'admin_init',        [$this, 'scfa_admin_settings'] );
-            }
+            add_action( 'admin_init',            [$this, 'scfa_admin_settings'] );
+    		// Maybe "current_screen" is a better hook than "edit_form_top" to call here
     		add_action( 'edit_form_top',         [$this, 'scfa_admin_register_editor_hooks'] );
-    		//Maybe "current_screen" is a better hook than "edit_form_top" to call here
         } else {
             // Public things to do
     		add_action( 'init',                  [$this, 'shortcode_init'] );
@@ -233,10 +230,10 @@ class SCFA_Class {
         if ( ! is_admin() || ! is_user_logged_in() || ! current_user_can( 'manage_options' ) ) {
             return;
         }
-		add_options_page( esc_html__( 'SCFA settings', $this->plugin_name ),
+		add_options_page( esc_html__( 'SCFA settings', 'shortcodes-for-font-awesome' ),
 						 'SCFA',
 					     'manage_options',
-					     'scfa',
+					     $this->plugin_name,
 					     [ $this, 'scfa_admin_setup_options_page' ]
 						);
         // Add 'Settings' link in plugin list, @since 1.2.0
@@ -249,7 +246,7 @@ class SCFA_Class {
      * @since 1.2.0
      */
     public function scfa_admin_settings_link( array $links ) {
-        $our_link = '<a href ="' . esc_url( admin_url() ) . 'options-general.php?page=scfa">' . esc_html__( 'Settings' ) . '</a> ';
+        $our_link = '<a href ="' . esc_url( admin_url() ) . 'options-general.php?page=' . $this->plugin_name. '">' . esc_html__( 'Settings' ) . '</a> ';
         array_unshift( $links, $our_link );
         return ( $links );
     }
@@ -264,7 +261,8 @@ class SCFA_Class {
             return;
         }
         // Get ourselves a proper URL
-        $action = admin_url( 'options-general.php' ) . '?page=scfa';
+        // $action = admin_url( 'options-general.php' ) . '?page=scfa-settings';
+        $action = admin_url( 'admin.php' ) . '?page=' . $this->plugin_name;
         //
         $html = '';
         $tab_header = '<div class="wrap">';
@@ -275,14 +273,14 @@ class SCFA_Class {
             $tab_header .= '<span class="fas fa-code"></span>';
             $tab_header .= ' ]</h3>';
             $tab_header .= '<nav class="nav-tab-wrapper">';
-            $tab_header .= '<a href="' . $action . '" class="nav-tab' . ( empty( $this->scfa_settings_tab ) ? ' nav-tab-active':'' ) . '">'.
-                     esc_html__( 'Configuration', $this->plugin_name ) .
+            $tab_header .= '<a href="' . esc_url_raw( $action ) . '" class="nav-tab' . ( empty( $this->scfa_settings_tab ) ? ' nav-tab-active':'' ) . '">'.
+                     esc_html__( 'Configuration', 'shortcodes-for-font-awesome' ) .
                      '</a>';
-            $tab_header .= '<a href="' . $action . '&tab=usage" class="nav-tab' . ( $this->scfa_settings_tab === 'usage' ? ' nav-tab-active':'' ) . '">'.
-                     esc_html__( 'Quickguide', $this->plugin_name ) .
+            $tab_header .= '<a href="' . esc_url_raw( $action ) . '&tab=usage" class="nav-tab' . ( $this->scfa_settings_tab === 'usage' ? ' nav-tab-active':'' ) . '">'.
+                     esc_html__( 'Quickguide', 'shortcodes-for-font-awesome' ) .
                      '</a>';
-            $tab_header .= '<a href="' . $action . '&tab=about" class="nav-tab' . ( $this->scfa_settings_tab === 'about' ? ' nav-tab-active':'' ) . '">'.
-                     esc_html__( 'About', $this->plugin_name ) .
+            $tab_header .= '<a href="' . esc_url_raw( $action ). '&tab=about" class="nav-tab' . ( $this->scfa_settings_tab === 'about' ? ' nav-tab-active':'' ) . '">'.
+                     esc_html__( 'About', 'shortcodes-for-font-awesome' ) .
                      '</a>';
             $tab_header .= '</nav>';
             ob_start();
@@ -293,51 +291,51 @@ class SCFA_Class {
             } elseif ( $this->scfa_settings_tab == 'usage' ) {
                 $html .= '<div class="tab-content">';
                 $html .= '<div class="scfa-config-header">';
-                $html .= '<p>' . esc_html__( 'This is intended as a quick reference for the shortcode. For a complete list of Font Awesome classes, please see', $this->plugin_name ).
+                $html .= '<p>' . esc_html__( 'This is intended as a quick reference for the shortcode. For a complete list of Font Awesome classes, please see', 'shortcodes-for-font-awesome' ).
                          ' <a href="https://fontawesome.com" target="_blank" class="scfa-ext-link">fontawesome.com</a> &amp; <a href="https://fontawesome.com/cheatsheet" class="scfa-ext-link" target="_blank">fontawesome.com/cheatsheet</a>.</p>' .
-                         '<p>' . esc_html__( 'Some icon styles may only be available with a Pro license', $this->plugin_name ) . '</i>' .
+                         '<p>' . esc_html__( 'Some icon styles may only be available with a Pro license', 'shortcodes-for-font-awesome' ) . '</i>' .
                          '. ' .
-                         esc_html__( 'You can (obviously) specify everything class related in the class="" parameter if that is more convenient for you', $this->plugin_name ) .
+                         esc_html__( 'You can (obviously) specify everything class related in the class="" parameter if that is more convenient for you', 'shortcodes-for-font-awesome' ) .
                          '.</p>';
-                $html .= '<h2>' . esc_html__( 'General format', $this->plugin_name ) . '</h2>';
+                $html .= '<h2>' . esc_html__( 'General format', 'shortcodes-for-font-awesome' ) . '</h2>';
                 //Basic usage
-                $html .= '<h4>' . esc_html__( 'Generate <span> element with icon and default (icon) style:', $this->plugin_name ) . '</h4>' .
+                $html .= '<h4>' . esc_html__( 'Generate <span> element with icon and default (icon) style:', 'shortcodes-for-font-awesome' ) . '</h4>' .
                          '<p><pre>  ' . esc_html( '[scfa icon="address-book"][/scfa]' ) . '</pre></p>';
                 //Basic usage with style
-                $html .= '<h4>' . esc_html__( 'Generate <span> element with the specified style and icon:', $this->plugin_name ) . '</h4>' .
+                $html .= '<h4>' . esc_html__( 'Generate <span> element with the specified style and icon:', 'shortcodes-for-font-awesome' ) . '</h4>' .
                          '<p><pre>  ' . esc_html( '[scfa icon="far address-book"][/scfa]' ). '</pre></p>';
                 //Show size usage
-                $html .= '<h4>' . esc_html__( 'Generate <span> element with the specified style and icon and size:', $this->plugin_name ) . '</h4>' .
+                $html .= '<h4>' . esc_html__( 'Generate <span> element with the specified style and icon and size:', 'shortcodes-for-font-awesome' ) . '</h4>' .
                          '<p><pre>  ' . esc_html( '[scfa icon="far address-book" size="5x"][/scfa]' ) . '</pre></p>';
                 //Show basic with additional css
-                $html .= '<h4>' . esc_html__( 'Generate <span> element with the specified style and icon and custom CSS:', $this->plugin_name ) . '</h4>' .
+                $html .= '<h4>' . esc_html__( 'Generate <span> element with the specified style and icon and custom CSS:', 'shortcodes-for-font-awesome' ) . '</h4>' .
                          '<p><pre>  ' . esc_html( '[scfa icon="fas address-book" css="font-size:20px;color:blue;"][/scfa]' ) . '</pre></p>';
                 //Show basic with additional class
-                $html .= '<h4>' . esc_html__( 'Generate <span> element with the specified style and icon and custom class:', $this->plugin_name ) . '</h4>' .
+                $html .= '<h4>' . esc_html__( 'Generate <span> element with the specified style and icon and custom class:', 'shortcodes-for-font-awesome' ) . '</h4>' .
                          '<p><pre>  ' . esc_html( '[scfa icon="far address-book" class="fa-pull-right myotherclass"][/scfa]' ) . '</pre></p>';
                 //Show basic with fixed width
-                $html .= '<h4>' . esc_html__( 'Generate <span> element with the specified style and icon and fixed width:', $this->plugin_name ) . '</h4>' .
+                $html .= '<h4>' . esc_html__( 'Generate <span> element with the specified style and icon and fixed width:', 'shortcodes-for-font-awesome' ) . '</h4>' .
                          '<p><pre>  ' . esc_html( '[scfa icon="fas address-book" fixed="1"][/scfa]' ) . '</pre></p>';
                 $html .= '</div>';
                 $html .= '</div>'; // tab-content
             } else {
                 if ( $this->scfa_asset_type == 2 ) {
                     $tab_header .= '<div class="notice notice-info"><p>';
-                    $tab_header .= esc_html__( 'Please note that to serve the specified asset URL as CSS, Font Awesome expects to be able to include web fonts relative to the URL you specify.', $this->plugin_name ).
+                    $tab_header .= esc_html__( 'Please note that to serve the specified asset URL as CSS, Font Awesome expects to be able to include web fonts relative to the URL you specify.', 'shortcodes-for-font-awesome' ).
                                    '</p>';
-                    $tab_header .= '<p>' . esc_html__( 'If you specify https://mysite.com/assets/css/all.min.css, Font Awesome will attempt to include web fonts from https://mysite.com/assets/webfonts/...', $this->plugin_name ).
+                    $tab_header .= '<p>' . esc_html__( 'If you specify https://mysite.com/assets/css/all.min.css, Font Awesome will attempt to include web fonts from https://mysite.com/assets/webfonts/...', 'shortcodes-for-font-awesome' ).
                                    '</p>';
                     $tab_header .= '</div>';
                 } elseif ( $this->scfa_asset_type == 4  ) {
                     $tab_header .= '<div class="notice notice-info"><p>';
-                    $tab_header .= esc_html__( 'Please make sure you include the Font Awesome assets in some other way.', $this->plugin_name );
+                    $tab_header .= esc_html__( 'Please make sure you include the Font Awesome assets in some other way.', 'shortcodes-for-font-awesome' );
                     $tab_header .= '</p></div>';
                 }
                 $html .= '<form method="post" action="options.php">';
                 $html .= '<div class="tab-content">';
                 $html .= '<div class="scfa-config-header">';
-        		settings_fields( 'scfa-settings' );
-        		do_settings_sections( 'scfa-settings' );
+        		settings_fields( 'scfasettings' );
+        		do_settings_sections( 'scfasettings' );
                 submit_button();
                 $html .= ob_get_contents();
                 ob_end_clean();
@@ -358,21 +356,21 @@ class SCFA_Class {
     public function scfa_about_page() {
         echo '<div class="tab-content">';
         echo '<div class="scfa-config-header">'.
-             '<p>'  . esc_html__( 'Thank you for installing', $this->plugin_name ) .' Shortcodes for Font Awesome (SCFA). '.
-                      esc_html__( 'This plugin provides a simple way to include', $this->plugin_name ).
+             '<p>'  . esc_html__( 'Thank you for installing', 'shortcodes-for-font-awesome' ) .' Shortcodes for Font Awesome (SCFA). '.
+                      esc_html__( 'This plugin provides a simple way to include', 'shortcodes-for-font-awesome' ).
                       '&nbsp;<a href="https://fontawesome.com" class="scfa-ext-link" target="_blank">Font Awesome</a> '.
-                      esc_html__( 'on your WordPress site', $this->plugin_name ) . '</p>'.
+                      esc_html__( 'on your WordPress site', 'shortcodes-for-font-awesome' ) . '</p>'.
              '</div>';
         echo '<div class="scfa-config-section">'.
              '<p>'  . '<img class="scfa-wps-logo" alt="" src="' . plugin_dir_url( __FILE__ ) . 'img/webbplatsen_logo.png" />' .
-                      esc_html__( 'Commercial support and customizations for this plugin is available from', $this->plugin_name ) .
+                      esc_html__( 'Commercial support and customizations for this plugin is available from', 'shortcodes-for-font-awesome' ) .
                       ' <a class="scfa-ext-link" href="https://webbplatsen.se" target="_blank">WebbPlatsen i Sverige AB</a> '.
-                      esc_html__('in Stockholm, Sweden. We speak Swedish and English', $this->plugin_name ) . ' :-)' .
+                      esc_html__('in Stockholm, Sweden. We speak Swedish and English', 'shortcodes-for-font-awesome' ) . ' :-)' .
                       '<br/><br/>' .
-                      esc_html__( 'The plugin was written by Joaquim Homrighausen and sponsored by WebbPlatsen i Sverige AB.', $this->plugin_name ) .
+                      esc_html__( 'The plugin was written by Joaquim Homrighausen and sponsored by WebbPlatsen i Sverige AB.', 'shortcodes-for-font-awesome' ) .
              '</p>' .
-             '<p>'  . esc_html__( 'If you find this plugin useful, the author is happy to receive a donation, good review, or just a kind word.', $this->plugin_name ) . ' ' .
-                      esc_html__( 'If there is something you feel to be missing from this plugin, or if you have found a problem with the code or a feature, please do not hesitate to reach out to', $this->plugin_name ) .
+             '<p>'  . esc_html__( 'If you find this plugin useful, the author is happy to receive a donation, good review, or just a kind word.', 'shortcodes-for-font-awesome' ) . ' ' .
+                      esc_html__( 'If there is something you feel to be missing from this plugin, or if you have found a problem with the code or a feature, please do not hesitate to reach out to', 'shortcodes-for-font-awesome' ) .
                                   ' <a class="scfa-ext-link" href="mailto:support@webbplatsen.se">support@webbplatsen.se</a>' .
              '</p>';
              '</div>';
@@ -388,58 +386,65 @@ class SCFA_Class {
         if ( ! is_admin() || ! is_user_logged_in() || ! current_user_can( 'manage_options' ) ) {
             return;
         }
+        /*error_log( basename( __FILE__ ) . '(' . __FUNCTION__ . '): BEFORE ' . print_r( $GLOBALS['new_whitelist_options'], true ) );*/
 		// Add section
-		add_settings_section( 'scfa_section_1', esc_html__( 'URL settings', $this->plugin_name ), false, 'scfa-settings' );
+		add_settings_section( 'scfasettings', '', false, 'scfasettings' );
+        // Register settings
+
+		register_setting( 'scfasettings', 'scfa-asset-url');
+		register_setting( 'scfasettings', 'scfa-asset-type');
+		register_setting( 'scfasettings', 'scfa-default-style');
+		register_setting( 'scfasettings', 'scfa-remove-settings');
 		// Add fields asset URL
 		add_settings_field( 'scfa-asset-url',
-						    '<label for="scfa-asset-url">' . esc_html__( 'Asset URL', $this->plugin_name ) . '</label>',
+						    '<label for="scfa-asset-url">' . esc_html__( 'Asset URL', 'shortcodes-for-font-awesome' ) . '</label>',
 							[ $this, 'scfa_admin_paint_setting_field' ],
-							'scfa-settings',
-							'scfa_section_1',
+							'scfasettings',
+							'scfasettings',
 							array(
 								'name'        => 'scfa-asset-url',
 								'class'       => 'row',
 								'label'       => '',
 								'type'        => 'text',
-								'placeholder' => __( 'Enter a valid URL for the CSS or JS file to be used', $this->plugin_name ),
+								'placeholder' => __( 'Enter a valid URL for the CSS or JS file to be used', 'shortcodes-for-font-awesome' ),
 								'helper'      => '',
 								'desc'        => __( 'The URL of a Font Awesome CSS or JS file to be included when your site loads. '.
 													 'Leave empty to use included Font Awesome CSS resources. '.
 													 'If this is configured correctly, you will see some Font Awesome icons '.
-													 'below the SCFA header on this page.', $this->plugin_name ),
+													 'below the SCFA header on this page.', 'shortcodes-for-font-awesome' ),
 								'default'     => '',
 								'size'        => 60,
 								'maxlength'   => 255,
 							)
 						   );
 		// Add section
-		add_settings_section( 'scfa_section_2', __( 'Other settings', $this->plugin_name ), false, 'scfa-settings' );
+		//add_settings_section( 'scfa-section-2', __( 'Other settings', 'shortcodes-for-font-awesome' ), false, 'shortcodes-for-font-awesome' );
 		add_settings_field( 'scfa-asset-type',
-						    '<label for="scfa-asset-type">' . __( 'Asset type', $this->plugin_name ) . '</label>',
+						    '<label for="scfa-asset-type">' . __( 'Asset type', 'shortcodes-for-font-awesome' ) . '</label>',
 							[ $this, 'scfa_admin_paint_setting_field' ],
-							'scfa-settings',
-							'scfa_section_2',
+							'scfasettings',
+							'scfasettings',
 							array(
 								'name'        => 'scfa-asset-type',
 								'class'       => 'row',
 								'type'        => 'radio',
 								'options'     => array (
-													1 => __( 'Serve local Font Awesome CSS', $this->plugin_name ),
-													2 => __( 'Serve asset URL as CSS', $this->plugin_name ),
-													3 => __( 'Serve asset URL as Font Awesome CDN kit', $this->plugin_name ),
-													4 => __( 'None of the above, Font Awesome is activated elsewhere', $this->plugin_name ),
+													1 => __( 'Serve local Font Awesome CSS', 'shortcodes-for-font-awesome' ),
+													2 => __( 'Serve asset URL as CSS', 'shortcodes-for-font-awesome' ),
+													3 => __( 'Serve asset URL as Font Awesome CDN kit', 'shortcodes-for-font-awesome' ),
+													4 => __( 'None of the above, Font Awesome is activated elsewhere', 'shortcodes-for-font-awesome' ),
 												 ),
-								'desc'        => __( 'How the asset URL (above) should be used', $this->plugin_name ),
+								'desc'        => __( 'How the asset URL (above) should be used', 'shortcodes-for-font-awesome' ),
 								'helper'      => '',
 								'default'     => 1,
 								'value'       => $this->scfa_asset_type,
 							)
 						   );
 		add_settings_field( 'scfa-default-style',
-						    '<label for="scfa-asset-type">' . __( 'Default style', $this->plugin_name ) . '</label>',
+						    '<label for="scfa-default-style">' . __( 'Default style', 'shortcodes-for-font-awesome' ) . '</label>',
 							[ $this, 'scfa_admin_paint_setting_field' ],
-							'scfa-settings',
-							'scfa_section_2',
+							'scfasettings',
+							'scfasettings',
 							array(
 								'name'        => 'scfa-default-style',
 								'class'       => 'row',
@@ -450,29 +455,33 @@ class SCFA_Class {
 													3 => 'Light (fal)',
 													4 => 'Duotone (fad)',
 												 ),
-								'desc'        => __( 'Default icon style if not specified', $this->plugin_name ),
+								'desc'        => __( 'Default icon style if not specified', 'shortcodes-for-font-awesome' ),
 								'helper'      => '',
 								'default'     => 1,
 								'value'       => $this->scfa_default_style,
 							)
 						   );
 		add_settings_field( 'scfa-remove-settings',
-						    '<label for="scfa-remove-settings">' . __( 'Remove settings', $this->plugin_name ) . '</label>',
+						    '<label for="scfa-remove-settings">' . __( 'Remove settings', 'shortcodes-for-font-awesome' ) . '</label>',
 							[ $this, 'scfa_admin_paint_setting_field' ],
-							'scfa-settings',
-							'scfa_section_2',
+							'scfasettings',
+							'scfasettings',
 							array(
 								'name'        => 'scfa-remove-settings',
 								'class'       => 'row',
 								'type'        => 'checkbox',
-								'desc'        => __( 'Remove all SCFA plugin settings and data when plugin is uninstalled.', $this->plugin_name ),
+								'desc'        => __( 'Remove all SCFA plugin settings and data when plugin is uninstalled.', 'shortcodes-for-font-awesome' ),
 								'default'     => '0',
 							)
 						   );
-		register_setting( 'scfa-settings', 'scfa-asset-url');
-		register_setting( 'scfa-settings', 'scfa-asset-type');
-		register_setting( 'scfa-settings', 'scfa-default-style');
-		register_setting( 'scfa-settings', 'scfa-remove-settings');
+
+
+        //if ( defined('SCFA_DEBUG' ) ) {
+        /*
+        error_log( basename( __FILE__ ) . '(' . __FUNCTION__ . '): AFTER ' . print_r( $GLOBALS['new_whitelist_options'], true ) );
+        global $wp_registered_settings;
+        error_log( basename( __FILE__ ) . '(' . __FUNCTION__ . '): REG ' . print_r( $wp_registered_settings, true ) );
+        */
     }
 
 	/**
@@ -520,8 +529,8 @@ class SCFA_Class {
 				}
 				foreach ( $args['options'] as $k => $v) {
 					echo '<input type="radio" name="' . esc_attr( $args ['name'] ) . '"' .
-					     'id="' . esc_attr( $args ['name'] ). '" value="' .esc_attr( $k ). '" '.
-						 'class="' . esc_attr( $args ['class'] ). '"'.checked( $k, $value, false ).
+					     'id="' . esc_attr( $args ['name'] ). '" value="' . esc_attr( $k ) . '" '.
+						 'class="' . esc_attr( $args ['class'] ) . '"' . checked( $k, $value, false ).
 						 '>' . esc_html( $v ) . '<br/>';
 				}
 				echo '</p>';
@@ -624,7 +633,7 @@ class SCFA_Class {
 	public function scfa_admin_make_classic_editor_button() {
 		echo '<button id="scfa_shortcode" class="button" type="button">'.
 		     '<span class="fas fa-code"></span> '.
-		     esc_html__( 'Insert SCFA', $this->plugin_name ).
+		     esc_html__( 'Insert SCFA', 'shortcodes-for-font-awesome' ).
 			 '</button>';
 	}
 

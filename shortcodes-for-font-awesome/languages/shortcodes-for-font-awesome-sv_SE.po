@@ -132,7 +132,7 @@ msgstr "Kommersiell support och anpassning för detta tillägg finns att tillgå
 
 #: scfa.php:370
 msgid "in Stockholm, Sweden. We speak Swedish and English"
-msgstr "i Stockhol. Vi pratar svenska och engelska"
+msgstr "i Stockholm. Vi pratar svenska och engelska"
 
 #: scfa.php:372
 msgid ""
