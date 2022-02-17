@@ -2,9 +2,9 @@
 Contributors: joho68, webbplatsen
 Donate link: https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/
 Tags: font awesome, fontawesome, webfont, font, icon
-Requires at least: 5.0.0
-Tested up to: 5.8.0
-Stable tag: 1.2.1
+Requires at least: 5.5.0
+Tested up to: 5.9.0
+Stable tag: 1.3.0
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -15,17 +15,17 @@ Generate inline HTML with Font Awesome icon libray by using shortcodes.
 
 This WordPress shortcode plugin generates inline HTML for the Font Awesome icon libray.
 
-You can use any icon code supported by Font Awesome.
+You can use any icon code supported by Font Awesome 6.
 
 A few notes about this plugin:
 
-*   You may choose to host your Font Awesome files locally (default)
+*   You may choose to host your Font Awesome 6 files locally (default)
 *   You may choose to use the Font Awesome CDN
 *   You may choose to specify a custom URL for your Font Awesome files
 *   You may choose to disable Font Awesome assets if you include them elsewhere
 *   This plugin may create entries in your PHP error log (if active)
 *   This plugin contains no tracking code and does not process or collect any information about the visitor
-*   Tested with WordPress 5.5, 5.6, 5.7, and 5.8
+*   Tested with WordPress 5.5-5.9
 *   Tested with PHP 7.2 and PHP 7.4
 
 == Installation ==
@@ -70,7 +70,19 @@ There are more examples in the SCFA plugin settings screen.
 
 You can replace all of the Font Awesome files in the css/ sub-directory with an updated version of Font Awesome. Please note that the webfonts from Font Awesome go into the css/webfonts/ sub-directory.
 
+= Reference for the Font Awesome free icons =
+
+https://fontawesome.com/search?q=filter&m=free
+
 == Changelog ==
+
+= 1.3.0 =
+* Upgraded to FontAwesome 6.0
+* Tested plugin with WordPress 5.9
+* Minor i18n (translation) correction
+* Minor cosmetic correction
+* Added support for "Thin" icons (fat, fa-thin)
+* Added support for alternate (new) V6 type names (fa-solid, fa-regular, fa-light, fa-duotone, fa-thin, fa-brands
 
 = 1.2.1 =
 * Upgraded to FontAwesome 5.15.3
@@ -93,6 +105,11 @@ You can replace all of the Font Awesome files in the css/ sub-directory with an 
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.3.0 =
+Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
+
+The .eot, .svg, and .woff files in the /css/webfonts/ directory of the plugin are not used by Font Awesome 6 and can be removed.
 
 = 1.2.1 =
 Simply update the plugin via wordpress.org or download and install as per the installation instructions above.

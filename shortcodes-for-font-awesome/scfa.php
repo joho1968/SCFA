@@ -11,7 +11,7 @@
  * Plugin Name:       Shortcodes for Font Awesome
  * Plugin URI:        https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/
  * Description:       Generate inline HTML for Font Awesome using shortcodes
- * Version:           1.2.1
+ * Version:           1.3.0
  * Author:            Joaquim Homrighausen <joho@webbplatsen.se>
  * Author URI:        https://github.com/joho1968/
  * License:           GPL-2.0+
@@ -20,7 +20,7 @@
  * Domain Path:       /languages
  *
  * scfa.php (Shortcodes for Font Awesome)
- * Copyright (C) 2020, 2021 Joaquim Homrighausen
+ * Copyright (C) 2020, 2021, 2022 Joaquim Homrighausen
  *
  * This file is part of SCFA. SCFA is free software.
  *
@@ -51,7 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Current plugin version.
 define( 'SCFA_WORDPRESS_PLUGIN', true                          );
-define( 'SCFA_VERSION',          '1.2.1'                       );
+define( 'SCFA_VERSION',          '1.3.0'                       );
 define( 'SCFA_REV',              1                             );
 define( 'SCFA_PLUGINNAME_HUMAN', 'SCFA'                        );
 define( 'SCFA_PLUGINNAME_SLUG',  'shortcodes-for-font-awesome' );
@@ -70,11 +70,25 @@ class SCFA_Class {
 	protected $scfa_asset_url;                    // asset URL for asset_type == 2
     protected $scfa_settings_tab = '';
 
-	public static function getInstance( string $version = '', string $slug = '' )
+	final public static function getInstance( string $version = '', string $slug = '' )
 	{
 		null === self::$instance AND self::$instance = new self( $version, $slug );
 		return( self::$instance );
 	}
+    /**
+     * No clones please.
+     *
+     * @return void
+     */
+    final public function __clone() {
+    }
+    /**
+     * We are not a serial
+     *
+     * @return void
+     */
+    final public function __wakeup() {
+    }
 	public function __construct( string $version = '', string $slug = '' ) {
         if ( empty( $version ) ) {
             if ( defined( 'SCFA_VERSION' ) ) {
@@ -164,7 +178,7 @@ class SCFA_Class {
 				wp_enqueue_style( 'scfa-fontawesome' );
 				break;
 		}// switch
-        if ( is_admin() ) {
+        if ( function_exists( 'is_admin' ) && is_admin() ) {
             wp_register_style( 'scfa-admin', plugin_dir_url( __FILE__ ) . 'css/scfa-admin.css', array(), $this->resource_mtime( dirname(__FILE__).'/css/scfa-admin.css' ), 'all' );
             wp_enqueue_style( 'scfa-admin' );
         }
@@ -179,7 +193,7 @@ class SCFA_Class {
      */
     public function run() {
         // Admin setup
-        if ( is_admin() ) {
+        if ( function_exists( 'is_admin' ) && is_admin() ) {
             // Setup i18n. We use the 'init' action rather than 'plugins_loaded' as per
             // https://developer.wordpress.org/reference/functions/load_plugin_textdomain/#user-contributed-notes
     		add_action( 'init',                  [$this, 'scfa_locale'] );
@@ -231,7 +245,7 @@ class SCFA_Class {
             return;
         }
 		add_options_page( esc_html__( 'SCFA settings', 'shortcodes-for-font-awesome' ),
-						 'SCFA',
+						 'SCFA' . ' [ <span class="small fa-solid fa-font"></span>&nbsp;<span class="fa-solid fa-code"></span> ]',
 					     'manage_options',
 					     $this->plugin_name,
 					     [ $this, 'scfa_admin_setup_options_page' ]
@@ -266,11 +280,11 @@ class SCFA_Class {
         //
         $html = '';
         $tab_header = '<div class="wrap">';
-            $tab_header .= '<h1>Shortcodes for Font Awesome (SCFA)</h1>';
+            $tab_header .= '<h1>Shortcodes for Font Awesome 6 (SCFA)</h1>';
             $tab_header .= '<h3>';
-            $tab_header .= '[ <span class="small fas fa-font"></span>';
+            $tab_header .= '[ <span class="small fa-solid fa-font"></span>';
             $tab_header .= '&nbsp;';
-            $tab_header .= '<span class="fas fa-code"></span>';
+            $tab_header .= '<span class="fa-solid fa-code"></span>';
             $tab_header .= ' ]</h3>';
             $tab_header .= '<nav class="nav-tab-wrapper">';
             $tab_header .= '<a href="' . esc_url_raw( $action ) . '" class="nav-tab' . ( empty( $this->scfa_settings_tab ) ? ' nav-tab-active':'' ) . '">'.
@@ -450,10 +464,11 @@ class SCFA_Class {
 								'class'       => 'row',
 								'type'        => 'radio',
 								'options'     => array (
-													1 => 'Solid (fas)',
-													2 => 'Regular (far)',
-													3 => 'Light (fal)',
-													4 => 'Duotone (fad)',
+													1 => 'Solid (fa-solid)',
+													2 => 'Regular (fa-regular)',
+													3 => 'Light (fa-light)',
+													4 => 'Duotone (fa-duotone)',
+													5 => 'Thin (fa-thin)',
 												 ),
 								'desc'        => __( 'Default icon style if not specified', 'shortcodes-for-font-awesome' ),
 								'helper'      => '',
@@ -632,7 +647,7 @@ class SCFA_Class {
 	 */
 	public function scfa_admin_make_classic_editor_button() {
 		echo '<button id="scfa_shortcode" class="button" type="button">'.
-		     '<span class="fas fa-code"></span> '.
+		     '<span class="fa-solid fa-code"></span> '.
 		     esc_html__( 'Insert SCFA', 'shortcodes-for-font-awesome' ).
 			 '</button>';
 	}
@@ -648,7 +663,7 @@ class SCFA_Class {
 	protected function scfa_shortcode_handle( $args ) {
 		$html = '';
 		if ( is_array( $args ) ) {
-			$fa_styles = array( 'fas', 'far', 'fal', 'fad', 'fab' );
+			$fa_styles = array( 'fas', 'far', 'fal', 'fad', 'fat', 'fab', 'fa-solid', 'fa-regular', 'fa-light', 'fa-duotone', 'fa-thin', 'fa-brands');
 			$s_class = $s_size = $s_addclass = $s_addcss = $s_fixed = '';
 			foreach( $args as $k => $v ) {
 				$v = trim ($v);
@@ -741,16 +756,19 @@ class SCFA_Class {
 					//No (known) style found in class= tag, apply default
 					switch( $this->scfa_default_style ) {
 						default://fas
-							$s_class = 'fas ' . $s_class;
+							$s_class = 'fa-solid ' . $s_class;
 							break;
 						case 2:
-							$s_class = 'far ' . $s_class;
+							$s_class = 'fa-regular ' . $s_class;
 							break;
 						case 3:
-							$s_class = 'fal ' . $s_class;
+							$s_class = 'fa-light ' . $s_class;
 							break;
-						case 3:
-							$s_class = 'fad ' . $s_class;
+						case 4:
+							$s_class = 'fa-duotone ' . $s_class;
+							break;
+						case 5:
+							$s_class = 'fa-thin ' . $s_class;
 							break;
 					}//switch
 				}//apply default style

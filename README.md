@@ -1,8 +1,8 @@
-[![Software License](https://img.shields.io/badge/License-GPL%20v2-green.svg?style=flat-square)](LICENSE) [![PHP 7.2\+](https://img.shields.io/badge/PHP-7.2-blue?style=flat-square)](https://php.net) [![PHP 7.4\+](https://img.shields.io/badge/PHP-7.4-blue?style=flat-square)](https://php.net) [![WordPress 5](https://img.shields.io/badge/WordPress-5.8-orange?style=flat-square)](https://wordpress.org)
+[![Software License](https://img.shields.io/badge/License-GPL%20v2-green.svg?style=flat-square)](LICENSE) [![PHP 7.2\+](https://img.shields.io/badge/PHP-7.2-blue?style=flat-square)](https://php.net) [![PHP 7.4\+](https://img.shields.io/badge/PHP-7.4-blue?style=flat-square)](https://php.net) [![WordPress 5](https://img.shields.io/badge/WordPress-5.9-orange?style=flat-square)](https://wordpress.org)
 
 # SCFA
 
-Shortcodes for Font Awesome (SCFA) is a WordPress plugin to generate inline HTML with Font Awesome icon libray.
+Shortcodes for Font Awesome (SCFA) is a WordPress plugin to generate inline HTML with Font Awesome 6 icon libray.
 
 ## Description
 
@@ -12,13 +12,13 @@ The plugin is also available on [wordpress.org](https://wordpress.org/plugins/sh
 
 A few notes about this plugin:
 
-* You may choose to host your Font Awesome files locally (default)
+* You may choose to host your Font Awesome files 6 locally (default)
 * You may choose to use the Font Awesome CDN
 * You may choose to specify a custom URL for your Font Awesome files
 * You may choose to disable Font Awesome assets if you include them elsewhere
 * This plugin may create entries in your PHP error log (if active)
 * This plugin contains no tracking code and does not process or collect any information about the visitor
-* Tested with WordPress 5.5, 5.6, 5.7, and 5.8
+* Tested with WordPress 5.5-5.9
 * Tested with PHP 7.2 and PHP 7.4
 
 ## Installation
@@ -65,6 +65,14 @@ You can replace all of the Font Awesome files in the `css/fontawesome/` sub-dire
 
 ## Changelog
 
+### 1.3.0
+* Upgraded to FontAwesome 6.0
+* Tested plugin with WordPress 5.9
+* Minor i18n (translation) correction
+* Minor cosmetic correction
+* Added support for "Thin" icons (fat, fa-thin)
+* Added support for alternate (new) V6 type names (fa-solid, fa-regular, fa-light, fa-duotone, fa-thin, fa-brands
+
 ### 1.2.1
 * Upgraded to FontAwesome 5.15.3
 * Tested plugin with WordPress 5.8
@@ -86,6 +94,10 @@ You can replace all of the Font Awesome files in the `css/fontawesome/` sub-dire
 
 ## Upgrade Notice
 
+### 1.3.0
+* Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
+* The .eot, .svg, and .woff files in the /css/webfonts/ directory of the plugin are not used by Font Awesome 6 and can be removed.
+
 ### 1.2.1
 * Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
 
@@ -102,7 +114,7 @@ You can replace all of the Font Awesome files in the `css/fontawesome/` sub-dire
 
 Please see [LICENSE](LICENSE) for a full copy of GPLv2
 
-Copyright (C) 2020, 2021 [Joaquim Homrighausen](https://github.com/joho1968).
+Copyright (C) 2020, 2021, 2022 [Joaquim Homrighausen](https://github.com/joho1968).
 
 This file is part of Shortcodes for Font Awesome (SCFA). Shortcodes for Font Awesome is free software.
 
