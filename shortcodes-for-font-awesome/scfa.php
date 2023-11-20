@@ -11,7 +11,7 @@
  * Plugin Name:       Shortcodes for Font Awesome
  * Plugin URI:        https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/
  * Description:       Generate inline HTML for Font Awesome using shortcodes
- * Version:           1.3.0
+ * Version:           1.4.0
  * Author:            Joaquim Homrighausen <joho@webbplatsen.se>
  * Author URI:        https://github.com/joho1968/
  * License:           GPL-2.0+
@@ -20,7 +20,7 @@
  * Domain Path:       /languages
  *
  * scfa.php (Shortcodes for Font Awesome)
- * Copyright (C) 2020, 2021, 2022 Joaquim Homrighausen
+ * Copyright (C) 2020-2023 Joaquim Homrighausen
  *
  * This file is part of SCFA. SCFA is free software.
  *
@@ -51,7 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Current plugin version.
 define( 'SCFA_WORDPRESS_PLUGIN', true                          );
-define( 'SCFA_VERSION',          '1.3.0'                       );
+define( 'SCFA_VERSION',          '1.4.0'                       );
 define( 'SCFA_REV',              1                             );
 define( 'SCFA_PLUGINNAME_HUMAN', 'SCFA'                        );
 define( 'SCFA_PLUGINNAME_SLUG',  'shortcodes-for-font-awesome' );
@@ -94,7 +94,7 @@ class SCFA_Class {
             if ( defined( 'SCFA_VERSION' ) ) {
                 $this->scfa_plugin_version = SCFA_VERSION;
             } else {
-                $this->scfa_plugin_version = '1.2.1';
+                $this->scfa_plugin_version = '1.4.0';
             }
         } else {
             $this->scfa_plugin_version = $version;
@@ -443,7 +443,7 @@ class SCFA_Class {
 								'class'       => 'row',
 								'type'        => 'radio',
 								'options'     => array (
-													1 => __( 'Serve local Font Awesome CSS', 'shortcodes-for-font-awesome' ),
+													1 => __( 'Serve local Font Awesome CSS', 'shortcodes-for-font-awesome' ) . ' ("FontAwesome Free")',
 													2 => __( 'Serve asset URL as CSS', 'shortcodes-for-font-awesome' ),
 													3 => __( 'Serve asset URL as Font Awesome CDN kit', 'shortcodes-for-font-awesome' ),
 													4 => __( 'None of the above, Font Awesome is activated elsewhere', 'shortcodes-for-font-awesome' ),

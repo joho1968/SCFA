@@ -1,4 +1,4 @@
-[![Software License](https://img.shields.io/badge/License-GPL%20v2-green.svg?style=flat-square)](LICENSE) [![PHP 7.2\+](https://img.shields.io/badge/PHP-7.2-blue?style=flat-square)](https://php.net) [![PHP 7.4\+](https://img.shields.io/badge/PHP-7.4-blue?style=flat-square)](https://php.net) [![WordPress 5](https://img.shields.io/badge/WordPress-5.9-orange?style=flat-square)](https://wordpress.org)
+[![Software License](https://img.shields.io/badge/License-GPL%20v2-green.svg?style=flat-square)](LICENSE) [![PHP 7.2\+](https://img.shields.io/badge/PHP-7.2-blue?style=flat-square)](https://php.net) [![PHP 7.4\+](https://img.shields.io/badge/PHP-7.4-blue?style=flat-square)](https://php.net) [![WordPress 5](https://img.shields.io/badge/WordPress-6.4-orange?style=flat-square)](https://wordpress.org)
 
 # SCFA
 
@@ -18,8 +18,8 @@ A few notes about this plugin:
 * You may choose to disable Font Awesome assets if you include them elsewhere
 * This plugin may create entries in your PHP error log (if active)
 * This plugin contains no tracking code and does not process or collect any information about the visitor
-* Tested with WordPress 5.5-5.9
-* Tested with PHP 7.2 and PHP 7.4
+* Tested with WordPress 5.5-6.4
+* Tested with PHP 7.2 and PHP 8
 
 ## Installation
 
@@ -64,6 +64,10 @@ There are more examples in the SCFA plugin settings screen.
 You can replace all of the Font Awesome files in the `css/fontawesome/` sub-directory with an updated version of Font Awesome. Please note that the webfonts from Font Awesome go into the `css/webfonts/` sub-directory.
 
 ## Changelog
+
+### 1.4.0
+* Upgraded to FontAwesome 6.4
+* Tested plugin with WordPress 6.4.1
 
 ### 1.3.0
 * Upgraded to FontAwesome 6.0

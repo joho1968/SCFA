@@ -3,8 +3,8 @@ Contributors: joho68, webbplatsen
 Donate link: https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/
 Tags: font awesome, fontawesome, webfont, font, icon
 Requires at least: 5.5.0
-Tested up to: 5.9.0
-Stable tag: 1.3.0
+Tested up to: 6.4
+Stable tag: 1.4.0
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -25,8 +25,8 @@ A few notes about this plugin:
 *   You may choose to disable Font Awesome assets if you include them elsewhere
 *   This plugin may create entries in your PHP error log (if active)
 *   This plugin contains no tracking code and does not process or collect any information about the visitor
-*   Tested with WordPress 5.5-5.9
-*   Tested with PHP 7.2 and PHP 7.4
+*   Tested with WordPress 5.5-6.4.1
+*   Tested with PHP 7.2 and PHP 8
 
 == Installation ==
 
@@ -76,6 +76,10 @@ https://fontawesome.com/search?q=filter&m=free
 
 == Changelog ==
 
+= 1.4.0 =
+* Upgraded to FontAwesome 6.4
+* Tested plugin with WordPress 6.4.1
+
 = 1.3.0 =
 * Upgraded to FontAwesome 6.0
 * Tested plugin with WordPress 5.9
@@ -106,6 +110,10 @@ https://fontawesome.com/search?q=filter&m=free
 
 == Upgrade Notice ==
 
+= 1.4.0 =
+Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
+
+The .eot, .svg, and .woff files in the /css/webfonts/ directory of the plugin are not used by Font Awesome 6 and can be removed.
 = 1.3.0 =
 Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
 
