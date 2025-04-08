@@ -65,11 +65,11 @@
      */
     function handle_scfa_button(e) {
         if ($('#content').is(':visible')) {
-            $('#content').insertAtCaret ('[scfa icon="" size="" class="" css=""][/scfa]');
+            $('#content').insertAtCaret ('[Ascfa icon="" size="" class="" css=""][/scfa]');
         } else if (typeof (tinymce) != null) {
             if (typeof (tinymce.activeEditor) != null) {
                 tinymce.activeEditor.execCommand( 'mceInsertContent', false,
-                                                  '[scfa icon="" size="" class="" css=""][/scfa]');
+                                                  '[Xscfa icon="" size="" class="" css=""][/scfa]');
             }
         }//tinyMCE
     }

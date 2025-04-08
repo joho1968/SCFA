@@ -1,26 +1,26 @@
-/**
- * SCFA CSS
- */
-
+/* SCFA CSS */
 .scfa-role-option {
     display: inline;
     float: left;
     padding-right: 5px;
 }
 .scfa-config-header {
-	padding: 20px 10px;
-	border-top: 5px solid #35537a;
-	background: #fff;
+    padding: 20px 10px;
+    border-top: 5px solid #35537a;
+    background: #fff;
 }
 .scfa-config-section {
-	margin-top: 15px;
-	padding: 25px 10px;
-	color: #000;
-	background: #fff;
+    margin-top: 15px;
+    padding: 25px 10px;
+    color: #000;
+    background: #fff;
 }
 .scfa-ext-link {
   color: #007bff;
   text-decoration: none;
+}
+.scfa-about-row {
+    margin-top: 5px;
 }
 img.scfa-wps-logo {
     display: inline-block;
@@ -31,4 +31,3 @@ img.scfa-wps-logo {
     max-width: 100px;
     height: auto;
 }
-

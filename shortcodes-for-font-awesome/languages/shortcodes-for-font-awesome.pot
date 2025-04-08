@@ -1,5 +1,5 @@
 # SCFA Language Template File (.POT)
-# Copyright (C) 2020, 2021 Joaquim Homrighausen
+# Copyright (C) 2020-2025 Joaquim Homrighausen
 # This file is distributed under the same license as the SCFA package.
 # Joaquim Homrighausen <joho@webbplatsen.se>, 2020
 #
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-17 13:50+0200\n"
-"PO-Revision-Date: 2021-03-17 13:54+0100\n"
+"PO-Revision-Date: 2025-04-08 11:00+0100\n"
 "Last-Translator: Joaquim Homrighausen <joho@webbplatsen.se>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en_US\n"
@@ -17,141 +17,161 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: scfa.php:236
+#: scfa.php:248
 msgid "SCFA settings"
 msgstr ""
 
-#: scfa.php:252
+#: scfa.php:263
 msgid "Settings"
 msgstr ""
 
-#: scfa.php:279
+#: scfa.php:291
 msgid "Configuration"
 msgstr ""
 
-#: scfa.php:282
+#: scfa.php:294
 msgid "Quickguide"
 msgstr ""
 
-#: scfa.php:285
+#: scfa.php:297
 msgid "About"
 msgstr ""
 
-#: scfa.php:296
+#: scfa.php:308
 msgid ""
 "This is intended as a quick reference for the shortcode. For a complete list "
 "of Font Awesome classes, please see"
 msgstr ""
 
-#: scfa.php:298
+#: scfa.php:310
 msgid "Some icon styles may only be available with a Pro license"
 msgstr ""
 
-#: scfa.php:300
+#: scfa.php:312
 msgid ""
 "You can (obviously) specify everything class related in the class=\"\" "
 "parameter if that is more convenient for you"
 msgstr ""
 
-#: scfa.php:302
+#: scfa.php:314
 msgid "General format"
 msgstr ""
 
-#: scfa.php:304
+#: scfa.php:316
 msgid "Generate <span> element with icon and default (icon) style:"
 msgstr ""
 
-#: scfa.php:307
+#: scfa.php:319
 msgid "Generate <span> element with the specified style and icon:"
 msgstr ""
 
-#: scfa.php:310
+#: scfa.php:322
 msgid "Generate <span> element with the specified style and icon and size:"
 msgstr ""
 
-#: scfa.php:313
+#: scfa.php:325
 msgid ""
 "Generate <span> element with the specified style and icon and custom CSS:"
 msgstr ""
 
-#: scfa.php:316
+#: scfa.php:328
 msgid ""
 "Generate <span> element with the specified style and icon and custom class:"
 msgstr ""
 
-#: scfa.php:319
+#: scfa.php:331
 msgid ""
 "Generate <span> element with the specified style and icon and fixed width:"
 msgstr ""
 
-#: scfa.php:326
+#: scfa.php:338
 msgid ""
 "Please note that to serve the specified asset URL as CSS, Font Awesome "
 "expects to be able to include web fonts relative to the URL you specify."
 msgstr ""
 
-#: scfa.php:328
+#: scfa.php:340
 msgid ""
 "If you specify https://mysite.com/assets/css/all.min.css, Font Awesome will "
 "attempt to include web fonts from https://mysite.com/assets/webfonts/..."
 msgstr ""
 
-#: scfa.php:333
+#: scfa.php:345
 msgid "Please make sure you include the Font Awesome assets in some other way."
 msgstr ""
 
-#: scfa.php:361
+#: scfa.php:373
 msgid "Thank you for installing"
 msgstr ""
 
-#: scfa.php:362
+#: scfa.php:374
 msgid "This plugin provides a simple way to include"
 msgstr ""
 
-#: scfa.php:364
+#: scfa.php:376
 msgid "on your WordPress site"
 msgstr ""
 
-#: scfa.php:368
+#: scfa.php:380
 msgid "Commercial support and customizations for this plugin is available from"
 msgstr ""
 
-#: scfa.php:370
+#: scfa.php:382
 msgid "in Stockholm, Sweden. We speak Swedish and English"
 msgstr ""
 
-#: scfa.php:372
+#: scfa.php:384
 msgid ""
 "The plugin was written by Joaquim Homrighausen and sponsored by WebbPlatsen "
 "i Sverige AB."
 msgstr ""
 
-#: scfa.php:374
+#: scfa.php:386
 msgid ""
 "If you find this plugin useful, the author is happy to receive a donation, "
 "good review, or just a kind word."
 msgstr ""
 
-#: scfa.php:375
+#: scfa.php:387
 msgid ""
 "If there is something you feel to be missing from this plugin, or if you "
 "have found a problem with the code or a feature, please do not hesitate to "
 "reach out to"
 msgstr ""
 
-#: scfa.php:392
-msgid "URL settings"
+#: scfa.php:391
+msgid "Other plugins"
 msgstr ""
 
 #: scfa.php:395
+msgid ""
+"Security plugin that provides integration with fail2ban and many other "
+"security features for WordPress"
+msgstr ""
+
+#: scfa.php:400
+msgid ""
+"Plugin that provides integration with Mattermost, including notifications "
+"and OAuth2 authentication"
+msgstr ""
+
+#: scfa.php:405
+msgid "Plugin that provides uncomplicated 2FA protection"
+msgstr ""
+
+#: scfa.php:410
+msgid "Plugin that provides uncomplicated map functionality"
+msgstr ""
+
+#: scfa.php:437
 msgid "Asset URL"
 msgstr ""
 
-#: scfa.php:404
+#: scfa.php:446
 msgid "Enter a valid URL for the CSS or JS file to be used"
 msgstr ""
 
-#: scfa.php:406
+#: scfa.php:449
 msgid ""
 "The URL of a Font Awesome CSS or JS file to be included when your site "
 "loads. Leave empty to use included Font Awesome CSS resources. If this is "
@@ -159,50 +179,46 @@ msgid ""
 "header on this page."
 msgstr ""
 
-#: scfa.php:416
-msgid "Other settings"
-msgstr ""
-
-#: scfa.php:418
+#: scfa.php:460
 msgid "Asset type"
 msgstr ""
 
-#: scfa.php:427
+#: scfa.php:469
 msgid "Serve local Font Awesome CSS"
 msgstr ""
 
-#: scfa.php:428
+#: scfa.php:470
 msgid "Serve asset URL as CSS"
 msgstr ""
 
-#: scfa.php:429
+#: scfa.php:471
 msgid "Serve asset URL as Font Awesome CDN kit"
 msgstr ""
 
-#: scfa.php:430
+#: scfa.php:472
 msgid "None of the above, Font Awesome is activated elsewhere"
 msgstr ""
 
-#: scfa.php:432
+#: scfa.php:474
 msgid "How the asset URL (above) should be used"
 msgstr ""
 
-#: scfa.php:439
+#: scfa.php:480
 msgid "Default style"
 msgstr ""
 
-#: scfa.php:453
+#: scfa.php:494
 msgid "Default icon style if not specified"
 msgstr ""
 
-#: scfa.php:460
+#: scfa.php:500
 msgid "Remove settings"
 msgstr ""
 
-#: scfa.php:468
+#: scfa.php:508
 msgid "Remove all SCFA plugin settings and data when plugin is uninstalled."
 msgstr ""
 
-#: scfa.php:627
+#: scfa.php:668
 msgid "Insert SCFA"
 msgstr ""

@@ -1,4 +1,4 @@
-[![Software License](https://img.shields.io/badge/License-GPL%20v2-green.svg?style=flat-square)](LICENSE) [![PHP 7.2\+](https://img.shields.io/badge/PHP-7.2-blue?style=flat-square)](https://php.net) [![PHP 7.4\+](https://img.shields.io/badge/PHP-7.4-blue?style=flat-square)](https://php.net) [![WordPress 5](https://img.shields.io/badge/WordPress-6.4-orange?style=flat-square)](https://wordpress.org)
+[![Software License](https://img.shields.io/badge/License-GPL%20v2-green.svg?style=flat-square)](LICENSE) [![PHP 7.4\+](https://img.shields.io/badge/PHP-7.4-blue?style=flat-square)](https://php.net) [![PHP 8.1\+](https://img.shields.io/badge/PHP-8.1-blue?style=flat-square)](https://php.net) [![WordPress 5](https://img.shields.io/badge/WordPress-6.7-orange?style=flat-square)](https://wordpress.org)
 
 # SCFA
 
@@ -18,8 +18,8 @@ A few notes about this plugin:
 * You may choose to disable Font Awesome assets if you include them elsewhere
 * This plugin may create entries in your PHP error log (if active)
 * This plugin contains no tracking code and does not process or collect any information about the visitor
-* Tested with WordPress 5.5-6.4
-* Tested with PHP 7.2 and PHP 8
+* Tested with WordPress 5.5-6.7
+* Tested with PHP 7.2, 7.4 and PHP 8.1
 
 ## Installation
 
@@ -65,6 +65,10 @@ You can replace all of the Font Awesome files in the `css/fontawesome/` sub-dire
 
 ## Changelog
 
+### 1.4.1
+* Upgraded to FontAwesome 6.7.2
+* Tested plugin with WordPress 6.7.x
+
 ### 1.4.0
 * Upgraded to FontAwesome 6.4
 * Tested plugin with WordPress 6.4.1
@@ -98,6 +102,10 @@ You can replace all of the Font Awesome files in the `css/fontawesome/` sub-dire
 
 ## Upgrade Notice
 
+### 1.4.1
+* Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
+* The .eot, .svg, and .woff files in the /css/webfonts/ directory of the plugin are not used by Font Awesome 6 and can be removed.
+
 ### 1.3.0
 * Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
 * The .eot, .svg, and .woff files in the /css/webfonts/ directory of the plugin are not used by Font Awesome 6 and can be removed.
@@ -118,7 +126,7 @@ You can replace all of the Font Awesome files in the `css/fontawesome/` sub-dire
 
 Please see [LICENSE](LICENSE) for a full copy of GPLv2
 
-Copyright (C) 2020, 2021, 2022 [Joaquim Homrighausen](https://github.com/joho1968).
+Copyright (C) 2020-2025 [Joaquim Homrighausen](https://github.com/joho1968).
 
 This file is part of Shortcodes for Font Awesome (SCFA). Shortcodes for Font Awesome is free software.
 
@@ -138,9 +146,9 @@ Boston, MA  02110-1301, USA.
 
 The Shortcodes for Font Awesome (SCFA) WordPress Plugin was written by Joaquim Homrighausen while converting :coffee: into code.
 
-SCFA is sponsored by [WebbPlatsen i Sverige AB](https://webbplatsen.se), Stockholm, :sweden:
+SCFA is sponsored by [WebbPlatsen i Sverige AB](https://webbplatsen.se) in :sweden:
 
-Commercial support and customizations for this plugin is available from WebbPlatsen i Sverige AB in Stockholm, :sweden:
+Commercial support and customizations for this plugin is available from WebbPlatsen i Sverige AB in :sweden:
 
 This plugin can also be downloaded from [code.webbplatsen.net](https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/) and [WordPress.org](https://wordpress.org/plugins/shortcodes-for-font-awesome/)
 

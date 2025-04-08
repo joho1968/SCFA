@@ -1,10 +1,10 @@
-=== SCFA (Shortcodes for Font Awesome) ===
+=== Shortcodes for Font Awesome ===
 Contributors: joho68, webbplatsen
 Donate link: https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/
 Tags: font awesome, fontawesome, webfont, font, icon
 Requires at least: 5.5.0
-Tested up to: 6.4
-Stable tag: 1.4.0
+Tested up to: 6.7
+Stable tag: 1.4.1
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -25,8 +25,8 @@ A few notes about this plugin:
 *   You may choose to disable Font Awesome assets if you include them elsewhere
 *   This plugin may create entries in your PHP error log (if active)
 *   This plugin contains no tracking code and does not process or collect any information about the visitor
-*   Tested with WordPress 5.5-6.4.1
-*   Tested with PHP 7.2 and PHP 8
+*   Tested with WordPress 5.5-6.7
+*   Tested with PHP 7.2, 7.4 and PHP 8.1
 
 == Installation ==
 
@@ -75,6 +75,10 @@ You can replace all of the Font Awesome files in the css/ sub-directory with an 
 https://fontawesome.com/search?q=filter&m=free
 
 == Changelog ==
+
+= 1.4.1 =
+* Upgraded to FontAwesome 6.7.2
+* Tested plugin with WordPress 6.7.x
 
 = 1.4.0 =
 * Upgraded to FontAwesome 6.4

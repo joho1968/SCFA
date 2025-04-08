@@ -11,7 +11,7 @@
  * Plugin Name:       Shortcodes for Font Awesome
  * Plugin URI:        https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/
  * Description:       Generate inline HTML for Font Awesome using shortcodes
- * Version:           1.4.0
+ * Version:           1.4.1
  * Author:            Joaquim Homrighausen <joho@webbplatsen.se>
  * Author URI:        https://github.com/joho1968/
  * License:           GPL-2.0+
@@ -20,7 +20,7 @@
  * Domain Path:       /languages
  *
  * scfa.php (Shortcodes for Font Awesome)
- * Copyright (C) 2020-2023 Joaquim Homrighausen
+ * Copyright (C) 2020-2025 Joaquim Homrighausen. All rights reserved.
  *
  * This file is part of SCFA. SCFA is free software.
  *
@@ -43,15 +43,15 @@ namespace scfa;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
-	die;
+    die;
 }
 if ( ! defined( 'ABSPATH' ) ) {
-	die( '-1' );
+    die( '-1' );
 }
 
 // Current plugin version.
 define( 'SCFA_WORDPRESS_PLUGIN', true                          );
-define( 'SCFA_VERSION',          '1.4.0'                       );
+define( 'SCFA_VERSION',          '1.4.1'                       );
 define( 'SCFA_REV',              1                             );
 define( 'SCFA_PLUGINNAME_HUMAN', 'SCFA'                        );
 define( 'SCFA_PLUGINNAME_SLUG',  'shortcodes-for-font-awesome' );
@@ -61,20 +61,20 @@ define( 'SCFA_DEBUG',            true                          );
 
 
 class SCFA_Class {
-	public static $instance = null;
-	protected $plugin_name;
-	protected $scfa_plugin_version;
+
+    public static $instance = null;
+    protected $plugin_name;
+    protected $scfa_plugin_version;
     protected $scfa_have_mbstring;                // @since 1.2.0
-	protected $scfa_asset_type;                   // 1=local, 2=url, 3=cdn, 4=none
-	protected $scfa_default_style;                // 1=fas, 2=far, 3=fal, 4=fad
-	protected $scfa_asset_url;                    // asset URL for asset_type == 2
+    protected $scfa_asset_type;                   // 1=local, 2=url, 3=cdn, 4=none
+    protected $scfa_default_style;                // 1=fas, 2=far, 3=fal, 4=fad
+    protected $scfa_asset_url;                    // asset URL for asset_type == 2
     protected $scfa_settings_tab = '';
 
-	final public static function getInstance( string $version = '', string $slug = '' )
-	{
-		null === self::$instance AND self::$instance = new self( $version, $slug );
-		return( self::$instance );
-	}
+    final public static function getInstance( string $version = '', string $slug = '' ) {
+        null === self::$instance AND self::$instance = new self( $version, $slug );
+        return( self::$instance );
+    }
     /**
      * No clones please.
      *
@@ -89,7 +89,7 @@ class SCFA_Class {
      */
     final public function __wakeup() {
     }
-	public function __construct( string $version = '', string $slug = '' ) {
+    public function __construct( string $version = '', string $slug = '' ) {
         if ( empty( $version ) ) {
             if ( defined( 'SCFA_VERSION' ) ) {
                 $this->scfa_plugin_version = SCFA_VERSION;
@@ -100,9 +100,9 @@ class SCFA_Class {
             $this->scfa_plugin_version = $version;
         }
         if ( empty( $slug ) ) {
-    		$this->plugin_name = SCFA_PLUGINNAME_SLUG;
+            $this->plugin_name = SCFA_PLUGINNAME_SLUG;
         } else {
-    		$this->plugin_name = $slug;
+            $this->plugin_name = $slug;
         }
         // Possibly trigger call debugging
         if ( defined('SCFA_DEBUG' ) ) {
@@ -112,15 +112,15 @@ class SCFA_Class {
         // We only need to query this once really
         $this->scfa_have_mbstring = extension_loaded( 'mbstring' );
         // Fetch options
-	    $this->scfa_asset_type = get_option( 'scfa-asset-type', 1 );
-	    $this->scfa_default_style = get_option( 'scfa-default-style', 1 );
-		$this->scfa_asset_url = get_option( 'scfa-asset-url', '' );
+        $this->scfa_asset_type = get_option( 'scfa-asset-type', 1 );
+        $this->scfa_default_style = get_option( 'scfa-default-style', 1 );
+        $this->scfa_asset_url = get_option( 'scfa-asset-url', '' );
         // Validate selected configuration tab
-        $this->scfa_settings_tab = ( ! empty( $_GET['tab'] ) ? $_GET['tab'] : '' );
+        $this->scfa_settings_tab = ( isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : '' );
         if ( ! in_array( $this->scfa_settings_tab, ['usage', 'about'] ) ) {
             $this->scfa_settings_tab = '';
         }
-	}// CTOR
+    }// CTOR
 
     /**
      * Fetch filemtime() of file and return it.
@@ -129,7 +129,7 @@ class SCFA_Class {
      * is returned instead. This could possibly simply return plugin_version in
      * production.
      *
-	 * @since  1.2.0
+     * @since  1.2.0
      * @param  string $filename The file for which we want filemtime()
      * @return string
      */
@@ -150,7 +150,7 @@ class SCFA_Class {
      * @since 1.0.0
      */
     public function scfa_locale() {
-		if ( ! load_plugin_textdomain( $this->plugin_name,
+        if ( ! load_plugin_textdomain( $this->plugin_name,
                                        false,
                                        dirname( plugin_basename( __FILE__ ) ) . '/languages' ) ) {
             /**
@@ -165,19 +165,19 @@ class SCFA_Class {
     /**
      * Setup CSS (admin)
      *
-	 * @since 1.0.0
+     * @since 1.0.0
      */
     public function scfa_setup_css() {
-		switch( $this->scfa_asset_type ) {
-			case 1:
-				wp_register_style( 'scfa-fontawesome', plugin_dir_url( __FILE__ ) . 'css/fontawesome/all.min.css', array(), $this->resource_mtime( dirname(__FILE__).'/css/fontawesome/all.min.css' ), 'all' );
-				wp_enqueue_style( 'scfa-fontawesome' );
-				break;
-			case 2:
-				wp_register_style( 'scfa-fontawesome', $this->asset_url, array(), $this->version, 'all' );
-				wp_enqueue_style( 'scfa-fontawesome' );
-				break;
-		}// switch
+        switch( $this->scfa_asset_type ) {
+            case 1:
+                wp_register_style( 'scfa-fontawesome', plugin_dir_url( __FILE__ ) . 'css/fontawesome/all.min.css', array(), $this->resource_mtime( dirname(__FILE__).'/css/fontawesome/all.min.css' ), 'all' );
+                wp_enqueue_style( 'scfa-fontawesome' );
+                break;
+            case 2:
+                wp_register_style( 'scfa-fontawesome', $this->asset_url, array(), $this->version, 'all' );
+                wp_enqueue_style( 'scfa-fontawesome' );
+                break;
+        }// switch
         if ( function_exists( 'is_admin' ) && is_admin() ) {
             wp_register_style( 'scfa-admin', plugin_dir_url( __FILE__ ) . 'css/scfa-admin.css', array(), $this->resource_mtime( dirname(__FILE__).'/css/scfa-admin.css' ), 'all' );
             wp_enqueue_style( 'scfa-admin' );
@@ -196,17 +196,17 @@ class SCFA_Class {
         if ( function_exists( 'is_admin' ) && is_admin() ) {
             // Setup i18n. We use the 'init' action rather than 'plugins_loaded' as per
             // https://developer.wordpress.org/reference/functions/load_plugin_textdomain/#user-contributed-notes
-    		add_action( 'init',                  [$this, 'scfa_locale'] );
+            add_action( 'init',                  [$this, 'scfa_locale'] );
             // Other "admin" things to do
-    		add_action( 'admin_enqueue_scripts', [$this, 'scfa_setup_css'] );
+            add_action( 'admin_enqueue_scripts', [$this, 'scfa_setup_css'] );
             add_action( 'admin_menu',            [$this, 'scfa_admin_setup_menu'] );
             add_action( 'admin_init',            [$this, 'scfa_admin_settings'] );
-    		// Maybe "current_screen" is a better hook than "edit_form_top" to call here
-    		add_action( 'edit_form_top',         [$this, 'scfa_admin_register_editor_hooks'] );
+            // Maybe "current_screen" is a better hook than "edit_form_top" to call here
+            add_action( 'edit_form_top',         [$this, 'scfa_admin_register_editor_hooks'] );
         } else {
             // Public things to do
-    		add_action( 'init',                  [$this, 'shortcode_init'] );
-    		add_action( 'wp_enqueue_scripts',    [$this, 'scfa_setup_css'] );
+        add_action( 'init',                  [$this, 'shortcode_init'] );
+        add_action( 'wp_enqueue_scripts',    [$this, 'scfa_setup_css'] );
         }
         // Other setup
         //add_action( 'wp_loaded',                 [$this, 'scfa_wp_loaded'] );
@@ -235,24 +235,23 @@ class SCFA_Class {
         }
     }
 
-	/**
-	 * Activate ourselves as a menu option (admin).
+    /**
+     * Activate ourselves as a menu option (admin).
      *
      * @since 1.0.0
-	 */
-	public function scfa_admin_setup_menu() {
+     */
+    public function scfa_admin_setup_menu() {
         if ( ! is_admin() || ! is_user_logged_in() || ! current_user_can( 'manage_options' ) ) {
             return;
         }
-		add_options_page( esc_html__( 'SCFA settings', 'shortcodes-for-font-awesome' ),
-						 'SCFA' . ' [ <span class="small fa-solid fa-font"></span>&nbsp;<span class="fa-solid fa-code"></span> ]',
-					     'manage_options',
-					     $this->plugin_name,
-					     [ $this, 'scfa_admin_setup_options_page' ]
-						);
+        add_options_page(
+            esc_html__( 'SCFA settings', 'shortcodes-for-font-awesome' ),
+            'SCFA' . ' [ <span class="small fa-solid fa-font"></span>&nbsp;<span class="fa-solid fa-code"></span> ]',
+            'manage_options',
+            $this->plugin_name, [ $this, 'scfa_admin_setup_options_page' ] );
         // Add 'Settings' link in plugin list, @since 1.2.0
-        add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), [$this, 'scfa_admin_settings_link']);
-	}
+        add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), [$this, 'scfa_admin_settings_link'] );
+    }
 
     /**
      * Add link to SCFA settings in plugin list.
@@ -260,17 +259,18 @@ class SCFA_Class {
      * @since 1.2.0
      */
     public function scfa_admin_settings_link( array $links ) {
-        $our_link = '<a href ="' . esc_url( admin_url() ) . 'options-general.php?page=' . $this->plugin_name. '">' . esc_html__( 'Settings' ) . '</a> ';
+        $our_link = '<a href ="' . esc_url( admin_url() ) . 'options-general.php?page=' .
+                    $this->plugin_name. '">' . esc_html__( 'Settings' ) . '</a> ';
         array_unshift( $links, $our_link );
         return ( $links );
     }
 
-	/**
-	 * Output content for settings form (admin).
+    /**
+     * Output content for settings form (admin).
      *
      * @since 1.0.0
-	 */
-	public function scfa_admin_setup_options_page() {
+     */
+    public function scfa_admin_setup_options_page() {
         if ( ! is_admin() || ! is_user_logged_in() || ! current_user_can( 'manage_options' ) ) {
             return;
         }
@@ -348,8 +348,8 @@ class SCFA_Class {
                 $html .= '<form method="post" action="options.php">';
                 $html .= '<div class="tab-content">';
                 $html .= '<div class="scfa-config-header">';
-        		settings_fields( 'scfasettings' );
-        		do_settings_sections( 'scfasettings' );
+                settings_fields( 'scfasettings' );
+                do_settings_sections( 'scfasettings' );
                 submit_button();
                 $html .= ob_get_contents();
                 ob_end_clean();
@@ -359,14 +359,14 @@ class SCFA_Class {
             }
         $html .= '</div>'; // wrap
         //
-		echo $tab_header . $html;
-	}
+        echo $tab_header . $html;
+    }
 
-	/**
-	 * Show about information (admin)
+    /**
+     * Show about information (admin)
      *
      * @since 1.2.0
-	 */
+     */
     public function scfa_about_page() {
         echo '<div class="tab-content">';
         echo '<div class="scfa-config-header">'.
@@ -386,111 +386,128 @@ class SCFA_Class {
              '<p>'  . esc_html__( 'If you find this plugin useful, the author is happy to receive a donation, good review, or just a kind word.', 'shortcodes-for-font-awesome' ) . ' ' .
                       esc_html__( 'If there is something you feel to be missing from this plugin, or if you have found a problem with the code or a feature, please do not hesitate to reach out to', 'shortcodes-for-font-awesome' ) .
                                   ' <a class="scfa-ext-link" href="mailto:support@webbplatsen.se">support@webbplatsen.se</a>' .
-             '</p>';
+             '</p>'.
+             '<p style="margin-top:20px;">' .
+                 '<h3>' . esc_html__( 'Other plugins', 'shortcodes-for-font-awesome' ) . '</h3>' .
+                 '<p class="scfa-about-row">' .
+                     '<a href="https://wordpress.org/plugins/fail2wp" target="_blank" class="scfa-ext-link">Fail2WP</a>' .
+                     '<br/>' .
+                     esc_html__( 'Security plugin that provides integration with fail2ban and many other security features for WordPress', 'shortcodes-for-font-awesome' ) . '.' .
+                 '</p>' .
+                 '<p class="scfa-about-row">' .
+                     '<a href="https://wordpress.org/plugins/cloudbridge-mattermost" target="_blank" class="scfa-ext-link">Cloudbridge Mattermost</a>' .
+                     '<br/>' .
+                     esc_html__( 'Plugin that provides integration with Mattermost, including notifications and OAuth2 authentication', 'shortcodes-for-font-awesome' ) . '.' .
+                 '</p>' .
+                 '<p class="scfa-about-row">' .
+                     '<a href="https://wordpress.org/plugins/cloudbridge-2fa" target="_blank" class="scfa-ext-link">Cloudbridge 2FA</a>' .
+                     '<br/>' .
+                     esc_html__( 'Plugin that provides uncomplicated 2FA protection', 'shortcodes-for-font-awesome' ) . '.' .
+                 '</p>' .
+                 '<p class="scfa-about-row">' .
+                     '<a href="https://wordpress.org/plugins/easymap" target="_blank" class="scfa-ext-link">EasyMap</a>' .
+                     '<br/>' .
+                     esc_html__( 'Plugin that provides uncomplicated map functionality', 'shortcodes-for-font-awesome' ) . '.' .
+                '</p>' .
+             '</p>' .
              '</div>';
         echo '</div>';
     }
 
-	/**
-	 * Setup the required fields and sections (admin)
+    /**
+     * Setup the required fields and sections (admin)
      *
      * @since 1.0.0
-	 */
-	public function scfa_admin_settings() {
+     */
+    public function scfa_admin_settings() {
         if ( ! is_admin() || ! is_user_logged_in() || ! current_user_can( 'manage_options' ) ) {
             return;
         }
         /*error_log( basename( __FILE__ ) . '(' . __FUNCTION__ . '): BEFORE ' . print_r( $GLOBALS['new_whitelist_options'], true ) );*/
-		// Add section
-		add_settings_section( 'scfasettings', '', false, 'scfasettings' );
+        // Add section
+        add_settings_section( 'scfasettings', '', false, 'scfasettings' );
         // Register settings
 
-		register_setting( 'scfasettings', 'scfa-asset-url');
-		register_setting( 'scfasettings', 'scfa-asset-type');
-		register_setting( 'scfasettings', 'scfa-default-style');
-		register_setting( 'scfasettings', 'scfa-remove-settings');
-		// Add fields asset URL
-		add_settings_field( 'scfa-asset-url',
-						    '<label for="scfa-asset-url">' . esc_html__( 'Asset URL', 'shortcodes-for-font-awesome' ) . '</label>',
-							[ $this, 'scfa_admin_paint_setting_field' ],
-							'scfasettings',
-							'scfasettings',
-							array(
-								'name'        => 'scfa-asset-url',
-								'class'       => 'row',
-								'label'       => '',
-								'type'        => 'text',
-								'placeholder' => __( 'Enter a valid URL for the CSS or JS file to be used', 'shortcodes-for-font-awesome' ),
-								'helper'      => '',
-								'desc'        => __( 'The URL of a Font Awesome CSS or JS file to be included when your site loads. '.
-													 'Leave empty to use included Font Awesome CSS resources. '.
-													 'If this is configured correctly, you will see some Font Awesome icons '.
-													 'below the SCFA header on this page.', 'shortcodes-for-font-awesome' ),
-								'default'     => '',
-								'size'        => 60,
-								'maxlength'   => 255,
-							)
-						   );
-		// Add section
-		//add_settings_section( 'scfa-section-2', __( 'Other settings', 'shortcodes-for-font-awesome' ), false, 'shortcodes-for-font-awesome' );
-		add_settings_field( 'scfa-asset-type',
-						    '<label for="scfa-asset-type">' . __( 'Asset type', 'shortcodes-for-font-awesome' ) . '</label>',
-							[ $this, 'scfa_admin_paint_setting_field' ],
-							'scfasettings',
-							'scfasettings',
-							array(
-								'name'        => 'scfa-asset-type',
-								'class'       => 'row',
-								'type'        => 'radio',
-								'options'     => array (
-													1 => __( 'Serve local Font Awesome CSS', 'shortcodes-for-font-awesome' ) . ' ("FontAwesome Free")',
-													2 => __( 'Serve asset URL as CSS', 'shortcodes-for-font-awesome' ),
-													3 => __( 'Serve asset URL as Font Awesome CDN kit', 'shortcodes-for-font-awesome' ),
-													4 => __( 'None of the above, Font Awesome is activated elsewhere', 'shortcodes-for-font-awesome' ),
-												 ),
-								'desc'        => __( 'How the asset URL (above) should be used', 'shortcodes-for-font-awesome' ),
-								'helper'      => '',
-								'default'     => 1,
-								'value'       => $this->scfa_asset_type,
-							)
-						   );
-		add_settings_field( 'scfa-default-style',
-						    '<label for="scfa-default-style">' . __( 'Default style', 'shortcodes-for-font-awesome' ) . '</label>',
-							[ $this, 'scfa_admin_paint_setting_field' ],
-							'scfasettings',
-							'scfasettings',
-							array(
-								'name'        => 'scfa-default-style',
-								'class'       => 'row',
-								'type'        => 'radio',
-								'options'     => array (
-													1 => 'Solid (fa-solid)',
-													2 => 'Regular (fa-regular)',
-													3 => 'Light (fa-light)',
-													4 => 'Duotone (fa-duotone)',
-													5 => 'Thin (fa-thin)',
-												 ),
-								'desc'        => __( 'Default icon style if not specified', 'shortcodes-for-font-awesome' ),
-								'helper'      => '',
-								'default'     => 1,
-								'value'       => $this->scfa_default_style,
-							)
-						   );
-		add_settings_field( 'scfa-remove-settings',
-						    '<label for="scfa-remove-settings">' . __( 'Remove settings', 'shortcodes-for-font-awesome' ) . '</label>',
-							[ $this, 'scfa_admin_paint_setting_field' ],
-							'scfasettings',
-							'scfasettings',
-							array(
-								'name'        => 'scfa-remove-settings',
-								'class'       => 'row',
-								'type'        => 'checkbox',
-								'desc'        => __( 'Remove all SCFA plugin settings and data when plugin is uninstalled.', 'shortcodes-for-font-awesome' ),
-								'default'     => '0',
-							)
-						   );
-
-
+        register_setting( 'scfasettings', 'scfa-asset-url');
+        register_setting( 'scfasettings', 'scfa-asset-type');
+        register_setting( 'scfasettings', 'scfa-default-style');
+        register_setting( 'scfasettings', 'scfa-remove-settings');
+        // Add fields asset URL
+        add_settings_field( 'scfa-asset-url',
+            '<label for="scfa-asset-url">' . esc_html__( 'Asset URL', 'shortcodes-for-font-awesome' ) . '</label>',
+            [ $this, 'scfa_admin_paint_setting_field' ],
+            'scfasettings',
+            'scfasettings',
+            array(
+                'name'        => 'scfa-asset-url',
+                'class'       => 'row',
+                'label'       => '',
+                'type'        => 'text',
+                'placeholder' => __( 'Enter a valid URL for the CSS or JS file to be used', 'shortcodes-for-font-awesome' ),
+                'helper'      => '',
+                'desc'        => __(
+                    'The URL of a Font Awesome CSS or JS file to be included when your site loads. '.
+                    'Leave empty to use included Font Awesome CSS resources. '.
+                    'If this is configured correctly, you will see some Font Awesome icons '.
+                    'below the SCFA header on this page.', 'shortcodes-for-font-awesome' ),
+                    'default'     => '',
+                    'size'        => 60,
+                    'maxlength'   => 255, )
+            );
+        // Add section
+        //add_settings_section( 'scfa-section-2', __( 'Other settings', 'shortcodes-for-font-awesome' ), false, 'shortcodes-for-font-awesome' );
+        add_settings_field( 'scfa-asset-type',
+            '<label for="scfa-asset-type">' . __( 'Asset type', 'shortcodes-for-font-awesome' ) . '</label>',
+            [ $this, 'scfa_admin_paint_setting_field' ],
+            'scfasettings',
+            'scfasettings',
+            array(
+                'name'        => 'scfa-asset-type',
+                'class'       => 'row',
+                'type'        => 'radio',
+                'options'     => array (
+                    1 => __( 'Serve local Font Awesome CSS', 'shortcodes-for-font-awesome' ) . ' ("FontAwesome Free")',
+                    2 => __( 'Serve asset URL as CSS', 'shortcodes-for-font-awesome' ),
+                    3 => __( 'Serve asset URL as Font Awesome CDN kit', 'shortcodes-for-font-awesome' ),
+                    4 => __( 'None of the above, Font Awesome is activated elsewhere', 'shortcodes-for-font-awesome' ),
+                ),
+            'desc'        => __( 'How the asset URL (above) should be used', 'shortcodes-for-font-awesome' ),
+            'helper'      => '',
+            'default'     => 1,
+            'value'       => $this->scfa_asset_type, )
+        );
+        add_settings_field( 'scfa-default-style',
+            '<label for="scfa-default-style">' . __( 'Default style', 'shortcodes-for-font-awesome' ) . '</label>',
+            [ $this, 'scfa_admin_paint_setting_field' ],
+            'scfasettings',
+            'scfasettings',
+            array(
+                'name'        => 'scfa-default-style',
+                'class'       => 'row',
+                'type'        => 'radio',
+                'options'     => array (
+                    1 => 'Solid (fa-solid)',
+                    2 => 'Regular (fa-regular)',
+                    3 => 'Light (fa-light)',
+                    4 => 'Duotone (fa-duotone)',
+                    5 => 'Thin (fa-thin)', ),
+            'desc'        => __( 'Default icon style if not specified', 'shortcodes-for-font-awesome' ),
+            'helper'      => '',
+            'default'     => 1,
+            'value'       => $this->scfa_default_style, )
+        );
+        add_settings_field( 'scfa-remove-settings',
+            '<label for="scfa-remove-settings">' . __( 'Remove settings', 'shortcodes-for-font-awesome' ) . '</label>',
+            [ $this, 'scfa_admin_paint_setting_field' ],
+            'scfasettings',
+            'scfasettings',
+            array(
+                'name'        => 'scfa-remove-settings',
+                'class'       => 'row',
+                'type'        => 'checkbox',
+                'desc'        => __( 'Remove all SCFA plugin settings and data when plugin is uninstalled.', 'shortcodes-for-font-awesome' ),
+                'default'     => '0', )
+        );
         //if ( defined('SCFA_DEBUG' ) ) {
         /*
         error_log( basename( __FILE__ ) . '(' . __FUNCTION__ . '): AFTER ' . print_r( $GLOBALS['new_whitelist_options'], true ) );
@@ -499,158 +516,158 @@ class SCFA_Class {
         */
     }
 
-	/**
-	 * Actual output of input fields HTML, etc.
-	 */
-	public function scfa_admin_paint_setting_field( $args ) {
-		if ( empty( $args['name'] ) ) {
-			return;
-		}
-	    $value = get_option( $args['name'], '!' );
-		$html = '';
-		if ( ! empty( $args ) ) {
-			if ( ! empty( $args['type'] ) && $args['type']=='checkbox' ) {
-				if ( $value == '!' ) {
-					// not set at all
-					if ( ! empty( $args['default'] ) ) {
-						$value = 1;
-					} else {
-						$value = 0;
-					}
-				}
-				$html .= ' type="checkbox" value="1"'.checked( 1, ! empty( $value ), false );
-				foreach( $args as $k => $v ) {
-					switch( $k ) {
-						case 'name':
-							$html .= ' name="' . esc_attr( $v ) . '"' .
-									 ' id="'   . esc_attr( $v ) . '"';
-							break;
-						case 'class':
-							$html .= ' class="' . esc_attr( $v ) . '"';
-							break;
-					}//switch
-				}//foreach
-				echo '<input'.$html.' />';
-			} elseif ( ! empty( $args['type'] ) && $args['type']=='radio' ) {
-				echo '<p>';
-				if (empty( $args ['value'] ) ) {
-					if ( empty( $args ['default'] ) ) {
-						$value = -1;
-					} else {
-						$value = $args ['default'];
-					}
-				} else {
-					$value = $args ['value'];
-				}
-				foreach ( $args['options'] as $k => $v) {
-					echo '<input type="radio" name="' . esc_attr( $args ['name'] ) . '"' .
-					     'id="' . esc_attr( $args ['name'] ). '" value="' . esc_attr( $k ) . '" '.
-						 'class="' . esc_attr( $args ['class'] ) . '"' . checked( $k, $value, false ).
-						 '>' . esc_html( $v ) . '<br/>';
-				}
-				echo '</p>';
-			} else {
-				foreach ( $args as $k => $v ) {
-					switch ( $k ) {
-						case 'name':
-							$html .= ' name="' . esc_attr( $v ) . '"' .
-									 ' id="'   . esc_attr( $v ) . '"';
-							break;
-						case 'placeholder':
-							$html .= ' placeholder="' . esc_attr__( $v ) . '"';
-							break;
-						case 'class':
-							$html .= ' class="' . esc_attr( $v ) . '"';
-							break;
-						case 'size':
-							$html .= ' size="' . esc_attr( $v ) . '"';
-							break;
-						case 'maxlength':
-							$html .= ' maxlength="' . esc_attr( $v ) . '"';
-							break;
-						case 'type':
-							$html .= ' type="' . esc_attr( $v ) . '"';
-							break;
-						case 'default':
-							if ( empty( $value ) ) {
-								$value = $v;
-							}
-							break;
-					}//switch
-				}//foreach
-				echo '<input value="' . esc_attr( $value ) . '" ' . $html . ' />';
-			}// !checkbox
-		}
-		// Handle help text
-		if ( ! empty( $args['helper'] )) {
-			echo '<span class="helper">' . esc_html__( $args['helper'] ) . '</span>';
-		}
-		// Handle supplemental description
-		if ( ! empty( $args['desc'] )) {
-			echo '<p class="description">' . esc_html__( $args['desc'] ) . '</p>';
-		}
-	}
+    /**
+     * Actual output of input fields HTML, etc.
+     */
+    public function scfa_admin_paint_setting_field( $args ) {
+        if ( empty( $args['name'] ) ) {
+            return;
+        }
+        $value = get_option( $args['name'], '!' );
+        $html = '';
+        if ( ! empty( $args ) ) {
+            if ( ! empty( $args['type'] ) && $args['type']=='checkbox' ) {
+                if ( $value == '!' ) {
+                    // not set at all
+                    if ( ! empty( $args['default'] ) ) {
+                        $value = 1;
+                    } else {
+                        $value = 0;
+                    }
+                }
+                $html .= ' type="checkbox" value="1"'.checked( 1, ! empty( $value ), false );
+                foreach( $args as $k => $v ) {
+                    switch( $k ) {
+                        case 'name':
+                            $html .= ' name="' . esc_attr( $v ) . '"' .
+                            ' id="'   . esc_attr( $v ) . '"';
+                            break;
+                        case 'class':
+                            $html .= ' class="' . esc_attr( $v ) . '"';
+                            break;
+                    }// switch
+                }// foreach
+                echo '<input'.$html.' />';
+            } elseif ( ! empty( $args['type'] ) && $args['type']=='radio' ) {
+                echo '<p>';
+                if ( empty( $args ['value'] ) ) {
+                    if ( empty( $args ['default'] ) ) {
+                        $value = -1;
+                    } else {
+                        $value = $args ['default'];
+                    }
+                } else {
+                    $value = $args ['value'];
+                }
+                foreach ( $args['options'] as $k => $v) {
+                    echo '<input type="radio" name="' . esc_attr( $args ['name'] ) . '"' .
+                        'id="' . esc_attr( $args ['name'] ). '" value="' . esc_attr( $k ) . '" '.
+                        'class="' . esc_attr( $args ['class'] ) . '"' . checked( $k, $value, false ).
+                        '>' . esc_html( $v ) . '<br/>';
+                }
+                echo '</p>';
+            } else {
+                foreach ( $args as $k => $v ) {
+                    switch ( $k ) {
+                        case 'name':
+                            $html .= ' name="' . esc_attr( $v ) . '"' .
+                            ' id="'   . esc_attr( $v ) . '"';
+                            break;
+                        case 'placeholder':
+                            $html .= ' placeholder="' . esc_attr__( $v ) . '"';
+                            break;
+                        case 'class':
+                            $html .= ' class="' . esc_attr( $v ) . '"';
+                            break;
+                        case 'size':
+                            $html .= ' size="' . esc_attr( $v ) . '"';
+                            break;
+                        case 'maxlength':
+                            $html .= ' maxlength="' . esc_attr( $v ) . '"';
+                            break;
+                        case 'type':
+                            $html .= ' type="' . esc_attr( $v ) . '"';
+                            break;
+                        case 'default':
+                            if ( empty( $value ) ) {
+                                $value = $v;
+                            }
+                            break;
+                    }// switch
+                }// foreach
+                echo '<input value="' . esc_attr( $value ) . '" ' . $html . ' />';
+            }// !checkbox
+        }
+        // Handle help text
+        if ( ! empty( $args['helper'] )) {
+            echo '<span class="helper">' . esc_html__( $args['helper'] ) . '</span>';
+        }
+        // Handle supplemental description
+        if ( ! empty( $args['desc'] )) {
+            echo '<p class="description">' . esc_html__( $args['desc'] ) . '</p>';
+            }
+    }
 
-	/**
-	 * Do editor related things if we're editing/creating page/post (admin).
-	 *
-	 * @since 1.0.0
-	 */
-	public function scfa_admin_register_editor_hooks() {
-		//Just to make sure user is actually allowed to do this
-		if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
-			return;
-		}
-		//Figure out where we are, if it's possible
-		if ( function_exists( 'get_current_screen' ) ) {
-			$current_screen = get_current_screen();
-			if ( is_object( $current_screen ) ) {
-				if ( isset( $current_screen->action ) ) {
-					$wp_action = $current_screen->action;
-				} else {
-					$wp_action = '';
-				}
-				if ( isset( $current_screen->base ) ) {
-					$wp_base = $current_screen->base;
-				} else {
-					$wp_base = '';
-				}
-				if ( isset( $current_screen->id ) ) {
-					$wp_id = $current_screen->id;
-				} else {
-					$wp_id = '';
-				}
-				if ( isset( $current_screen->parent_base ) ) {
-					$wp_parent_base = $current_screen->parent_base;
-				} else {
-					$wp_parent_base = '';
-				}
-				if ( isset( $current_screen->is_block_editor ) ) {
-					$wp_block_editor = $current_screen->is_block_editor;
-				} else {
-					$wp_block_editor = '';
-				}
-				//Make sure we're in the right place. Maybe we should check
-				//the $current_screen->post_type as well ...
-				if ( $wp_base == 'post' && $wp_parent_base == 'edit' ) {
-					add_action( 'media_buttons', [$this, 'scfa_admin_make_classic_editor_button'], 1001 );
-					wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/scfa-admin.js', array(), $this->resource_mtime( dirname(__FILE__).'/js/scfa-admin.js' ), 'all' );
-				}
-			}
-		}
-	}
+    /**
+     * Do editor related things if we're editing/creating page/post (admin).
+     *
+     * @since 1.0.0
+     */
+    public function scfa_admin_register_editor_hooks() {
+        //Just to make sure user is actually allowed to do this
+        if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
+            return;
+        }
+        //Figure out where we are, if it's possible
+        if ( function_exists( 'get_current_screen' ) ) {
+            $current_screen = get_current_screen();
+            if ( is_object( $current_screen ) ) {
+                if ( isset( $current_screen->action ) ) {
+                    $wp_action = $current_screen->action;
+                } else {
+                    $wp_action = '';
+                }
+                if ( isset( $current_screen->base ) ) {
+                    $wp_base = $current_screen->base;
+                } else {
+                    $wp_base = '';
+                }
+                if ( isset( $current_screen->id ) ) {
+                    $wp_id = $current_screen->id;
+                } else {
+                    $wp_id = '';
+                }
+                if ( isset( $current_screen->parent_base ) ) {
+                    $wp_parent_base = $current_screen->parent_base;
+                } else {
+                    $wp_parent_base = '';
+                }
+                if ( isset( $current_screen->is_block_editor ) ) {
+                    $wp_block_editor = $current_screen->is_block_editor;
+                } else {
+                    $wp_block_editor = '';
+                }
+                //Make sure we're in the right place. Maybe we should check
+                //the $current_screen->post_type as well ...
+                if ( $wp_base == 'post' && $wp_parent_base == 'edit' ) {
+                    add_action( 'media_buttons', [$this, 'scfa_admin_make_classic_editor_button'], 1001 );
+                    wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/scfa-admin.js', array(), $this->resource_mtime( dirname(__FILE__).'/js/scfa-admin.js' ), 'all' );
+                }
+            }
+        }
+    }
 
-	/*
-	 * Setup buttons for editor (admin).
-	 *
-	 * @since 1.0.0
-	 */
-	public function scfa_admin_make_classic_editor_button() {
-		echo '<button id="scfa_shortcode" class="button" type="button">'.
-		     '<span class="fa-solid fa-code"></span> '.
-		     esc_html__( 'Insert SCFA', 'shortcodes-for-font-awesome' ).
-			 '</button>';
-	}
+    /*
+     * Setup buttons for editor (admin).
+     *
+     * @since 1.0.0
+     */
+    public function scfa_admin_make_classic_editor_button() {
+        echo '<button id="scfa_shortcode" class="button" type="button">'.
+            '<span class="fa-solid fa-code"></span> '.
+            esc_html__( 'Insert SCFA', 'shortcodes-for-font-awesome' ).
+            '</button>';
+    }
 
 	/**
 	 * Create actual output for shortcode(s).
@@ -787,26 +804,26 @@ class SCFA_Class {
 		return ($html);
 	}
 
-	/**
-	 * Shortcode handler for [scfa][/scfa]
-	 *
-	 * @since 1.0.0
-	 */
-	public function scfa_shortcode( $args ) {
-		return( $this->scfa_shortcode_handle( $args, false ) );
-	}
+    /**
+     * Shortcode handler for [scfa][/scfa]
+     *
+     * @since 1.0.0
+     */
+    public function scfa_shortcode( $args ) {
+       return( $this->scfa_shortcode_handle( $args, false ) );
+    }
 
-	/**
-	 * Register the shortcodes for the public-facing side of the site.
-	 *
-	 * This function is added as an init action in run().
-	 *
-	 * @since 1.0.0
-	 */
-	public function shortcode_init() {
-		add_shortcode( 'scfa', [ $this, 'scfa_shortcode' ] );
-		add_filter( 'widget_text', 'do_shortcode' );
-	}
+    /**
+     * Register the shortcodes for the public-facing side of the site.
+     *
+     * This function is added as an init action in run().
+     *
+     * @since 1.0.0
+     */
+    public function shortcode_init() {
+       add_shortcode( 'scfa', [ $this, 'scfa_shortcode' ] );
+        add_filter( 'widget_text', 'do_shortcode' );
+    }
 
     /**
      * Activation of plugin.
@@ -839,8 +856,8 @@ class SCFA_Class {
  * @since 1.0.0
  */
 function run_scfa() {
-	$plugin = SCFA_Class::getInstance( SCFA_VERSION, SCFA_PLUGINNAME_SLUG );
-	$plugin->run();
+    $plugin = SCFA_Class::getInstance( SCFA_VERSION, SCFA_PLUGINNAME_SLUG );
+    $plugin->run();
 }
 
 run_scfa();
