@@ -11,7 +11,7 @@
  * Plugin Name:       Shortcodes for Font Awesome
  * Plugin URI:        https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/
  * Description:       Generate inline HTML for Font Awesome using shortcodes
- * Version:           1.4.1
+ * Version:           1.5.0
  * Author:            Joaquim Homrighausen <joho@webbplatsen.se>
  * Author URI:        https://github.com/joho1968/
  * License:           GPL-2.0+
@@ -51,7 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Current plugin version.
 define( 'SCFA_WORDPRESS_PLUGIN', true                          );
-define( 'SCFA_VERSION',          '1.4.1'                       );
+define( 'SCFA_VERSION',          '1.5.0'                       );
 define( 'SCFA_REV',              1                             );
 define( 'SCFA_PLUGINNAME_HUMAN', 'SCFA'                        );
 define( 'SCFA_PLUGINNAME_SLUG',  'shortcodes-for-font-awesome' );
@@ -280,7 +280,7 @@ class SCFA_Class {
         //
         $html = '';
         $tab_header = '<div class="wrap">';
-            $tab_header .= '<h1>Shortcodes for Font Awesome 6 (SCFA)</h1>';
+            $tab_header .= '<h1>Shortcodes for Font Awesome 7 (SCFA)</h1>';
             $tab_header .= '<h3>';
             $tab_header .= '[ <span class="small fa-solid fa-font"></span>';
             $tab_header .= '&nbsp;';
@@ -680,8 +680,12 @@ class SCFA_Class {
 	protected function scfa_shortcode_handle( $args ) {
 		$html = '';
 		if ( is_array( $args ) ) {
-			$fa_styles = array( 'fas', 'far', 'fal', 'fad', 'fat', 'fab', 'fa-solid', 'fa-regular', 'fa-light', 'fa-duotone', 'fa-thin', 'fa-brands');
+			$fa_styles = array(
+                'fas', 'far', 'fal', 'fad', 'fat', 'fab',
+                'fa-solid', 'fa-regular', 'fa-light', 'fa-duotone', 'fa-thin', 'fa-brands'
+            );
 			$s_class = $s_size = $s_addclass = $s_addcss = $s_fixed = '';
+            $has_style = false;
 			foreach( $args as $k => $v ) {
 				$v = trim ($v);
 				switch( $k ) {
@@ -698,7 +702,8 @@ class SCFA_Class {
 								foreach ( $x_icon as $icon ) {
 									if ( in_array ( $icon, $fa_styles ) ) {
 										//One of our known styles, simply add it
-										$s_classs .= ( $is_first ? '' : ' ' ) . $icon;
+										$s_class .= ( $is_first ? '' : ' ' ) . $icon;
+                                        $has_style = true;
 									} else {
                                         if ( $this->scfa_have_mbstring ) {
                                             if ( mb_strpos( $icon, 'fa-' ) !== 0 ) {
@@ -756,40 +761,41 @@ class SCFA_Class {
 			}//foreach
 
 			//Possibly apply default style
-            if ( $this->scfa_have_mbstring ) {
-    			$x_class = explode( ' ', mb_strtolower( $s_class ), 100 );
-            } else {
-    			$x_class = explode( ' ', strtolower( $s_class ), 100 );
-            }
-			if ( is_array( $x_class ) ) {
-				$has_style = false;
-				foreach( $x_class as $v ) {
-					if ( in_array( $v, $fa_styles ) ) {
-						$has_style = true;
-						break;
-					}
-				}//foreach
-				if ( ! $has_style ) {
-					//No (known) style found in class= tag, apply default
-					switch( $this->scfa_default_style ) {
-						default://fas
-							$s_class = 'fa-solid ' . $s_class;
-							break;
-						case 2:
-							$s_class = 'fa-regular ' . $s_class;
-							break;
-						case 3:
-							$s_class = 'fa-light ' . $s_class;
-							break;
-						case 4:
-							$s_class = 'fa-duotone ' . $s_class;
-							break;
-						case 5:
-							$s_class = 'fa-thin ' . $s_class;
-							break;
-					}//switch
-				}//apply default style
-			}//is_array ()
+            if ( ! $has_style ) {
+                if ( $this->scfa_have_mbstring ) {
+                    $x_class = explode( ' ', mb_strtolower( $s_class ), 100 );
+                } else {
+                    $x_class = explode( ' ', strtolower( $s_class ), 100 );
+                }
+                if ( is_array( $x_class ) ) {
+                    foreach ( $x_class as $v ) {
+                        if ( in_array( $v, $fa_styles ) ) {
+                            $has_style = true;
+                            break;
+                        }
+                    }//foreach
+                    if ( ! $has_style ) {
+                        // No (known) style found in class= tag, apply default
+                        switch ( $this->scfa_default_style ) {
+                            default://fas
+                                $s_class = 'fa-solid ' . $s_class;
+                                break;
+                            case 2:
+                                $s_class = 'fa-regular ' . $s_class;
+                                break;
+                            case 3:
+                                $s_class = 'fa-light ' . $s_class;
+                                break;
+                            case 4:
+                                $s_class = 'fa-duotone ' . $s_class;
+                                break;
+                            case 5:
+                                $s_class = 'fa-thin ' . $s_class;
+                                break;
+                        }// switch
+                    }// apply default style
+                }// is_array ()
+            }// ! $has_style
 
 			//Generate final output
 			$html .= '<span class="' . trim( esc_attr( $s_class ) .

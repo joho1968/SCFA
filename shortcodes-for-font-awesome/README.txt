@@ -3,8 +3,8 @@ Contributors: joho68, webbplatsen
 Donate link: https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/
 Tags: font awesome, fontawesome, webfont, font, icon
 Requires at least: 5.5.0
-Tested up to: 6.7
-Stable tag: 1.4.1
+Tested up to: 6.8
+Stable tag: 1.5.0
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -15,18 +15,19 @@ Generate inline HTML with Font Awesome icon libray by using shortcodes.
 
 This WordPress shortcode plugin generates inline HTML for the Font Awesome icon libray.
 
-You can use any icon code supported by Font Awesome 6.
+You can use any icon code supported by Font Awesome 7.
 
 A few notes about this plugin:
 
-*   You may choose to host your Font Awesome 6 files locally (default)
+*   You may choose to host your Font Awesome 7 files locally (default)
 *   You may choose to use the Font Awesome CDN
 *   You may choose to specify a custom URL for your Font Awesome files
 *   You may choose to disable Font Awesome assets if you include them elsewhere
 *   This plugin may create entries in your PHP error log (if active)
 *   This plugin contains no tracking code and does not process or collect any information about the visitor
-*   Tested with WordPress 5.5-6.7
+*   Tested with WordPress 5.5-6.8
 *   Tested with PHP 7.2, 7.4 and PHP 8.1
+*   See css/fontawesome/LICENSE.TXT for Font Awesome licensing details
 
 == Installation ==
 
@@ -38,7 +39,7 @@ This section describes how to install the plugin and get it working.
 
 == Configuration ==
 
-Decide if you want to use the included Font Awesome assets, they are the time of this writing at version 5.15.2. If you want to use another version, you can replace the included assets, use another URL for the CSS and webfont assets, or specify a Font Awesome CDN kit URL.
+Decide if you want to use the included Font Awesome assets, they are the time of this writing at version 7.0.1. If you want to use another version, you can replace the included assets, use another URL for the CSS and webfont assets, or specify a Font Awesome CDN kit URL.
 
 == Usage ==
 
@@ -75,6 +76,11 @@ You can replace all of the Font Awesome files in the css/ sub-directory with an 
 https://fontawesome.com/search?q=filter&m=free
 
 == Changelog ==
+
+= 1.5.0 =
+* Upgraded to FontAwesome 7.0.1
+* Tested plugin with WordPress 6.8.x
+* Fixed issue with plugin not honoring styles (reported by Christian Johanns)
 
 = 1.4.1 =
 * Upgraded to FontAwesome 6.7.2
@@ -114,6 +120,9 @@ https://fontawesome.com/search?q=filter&m=free
 
 == Upgrade Notice ==
 
+= 1.5.0 =
+Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
+
 = 1.4.0 =
 Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
 
@@ -139,7 +148,7 @@ Initial release
 
 The Shortcodes for Font Awesome Plugin was written by Joaquim Homrighausen while converting caffeine into code.
 
-Shortcodes for Font Awesome is sponsored by [WebbPlatsen i Sverige AB](https://www.webbplatsen.se), Stockholm, Sweden.
+Shortcodes for Font Awesome is sponsored by [WebbPlatsen i Sverige AB](https://www.webbplatsen.se), Sweden.
 
 This plugin can also be downloaded from [code.webbplatsen.net](https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/) and [GitHub](https://github.com/joho1968/SCFA)
 

@@ -1,8 +1,8 @@
-[![Software License](https://img.shields.io/badge/License-GPL%20v2-green.svg?style=flat-square)](LICENSE) [![PHP 7.4\+](https://img.shields.io/badge/PHP-7.4-blue?style=flat-square)](https://php.net) [![PHP 8.1\+](https://img.shields.io/badge/PHP-8.1-blue?style=flat-square)](https://php.net) [![WordPress 5](https://img.shields.io/badge/WordPress-6.7-orange?style=flat-square)](https://wordpress.org)
+[![Software License](https://img.shields.io/badge/License-GPL%20v2-green.svg?style=flat-square)](LICENSE) [![PHP 7.4\+](https://img.shields.io/badge/PHP-7.4-blue?style=flat-square)](https://php.net) [![PHP 8.1\+](https://img.shields.io/badge/PHP-8.1-blue?style=flat-square)](https://php.net) [![WordPress 5](https://img.shields.io/badge/WordPress-6.8-orange?style=flat-square)](https://wordpress.org)
 
 # SCFA
 
-Shortcodes for Font Awesome (SCFA) is a WordPress plugin to generate inline HTML with Font Awesome 6 icon libray.
+Shortcodes for Font Awesome (SCFA) is a WordPress plugin to generate inline HTML with Font Awesome 7 icon libray.
 
 ## Description
 
@@ -12,14 +12,15 @@ The plugin is also available on [wordpress.org](https://wordpress.org/plugins/sh
 
 A few notes about this plugin:
 
-* You may choose to host your Font Awesome files 6 locally (default)
+* You may choose to host your Font Awesome files 7 locally (default)
 * You may choose to use the Font Awesome CDN
 * You may choose to specify a custom URL for your Font Awesome files
 * You may choose to disable Font Awesome assets if you include them elsewhere
 * This plugin may create entries in your PHP error log (if active)
 * This plugin contains no tracking code and does not process or collect any information about the visitor
-* Tested with WordPress 5.5-6.7
+* Tested with WordPress 5.5-6.8
 * Tested with PHP 7.2, 7.4 and PHP 8.1
+* See `css/fontawesome/LICENSE.TXT` for Font Awesome licensing details
 
 ## Installation
 
@@ -31,7 +32,7 @@ This section describes how to install the plugin and get it working.
 
 ## Configuration
 
-Decide if you want to use the included Font Awesome assets, they are the time of this writing at version 5.2.4. If you want to use another version, you can replace the included assets, use another URL for the CSS and webfont assets, or specify a Font Awesome CDN kit URL.
+Decide if you want to use the included Font Awesome assets, they are the time of this writing at version 7.0.1. If you want to use another version, you can replace the included assets, use another URL for the CSS and webfont assets, or specify a Font Awesome CDN kit URL.
 
 ## Usage
 
@@ -64,6 +65,11 @@ There are more examples in the SCFA plugin settings screen.
 You can replace all of the Font Awesome files in the `css/fontawesome/` sub-directory with an updated version of Font Awesome. Please note that the webfonts from Font Awesome go into the `css/webfonts/` sub-directory.
 
 ## Changelog
+
+### 1.5.0
+* Upgraded to FontAwesome 7.0.1
+* Tested plugin with WordPress 6.8.x
+* Fixed issue with plugin not honoring styles (reported by Christian Johanns)
 
 ### 1.4.1
 * Upgraded to FontAwesome 6.7.2
