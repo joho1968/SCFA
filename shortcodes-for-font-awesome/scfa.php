@@ -11,7 +11,7 @@
  * Plugin Name:       Shortcodes for Font Awesome
  * Plugin URI:        https://code.webbplatsen.net/wordpress/wordpress-shortcodes-for-font-awesome/
  * Description:       Generate inline HTML for Font Awesome using shortcodes
- * Version:           1.5.0
+ * Version:           1.5.1
  * Author:            Joaquim Homrighausen <joho@webbplatsen.se>
  * Author URI:        https://github.com/joho1968/
  * License:           GPL-2.0+
@@ -20,7 +20,7 @@
  * Domain Path:       /languages
  *
  * scfa.php (Shortcodes for Font Awesome)
- * Copyright (C) 2020-2025 Joaquim Homrighausen. All rights reserved.
+ * Copyright (C) 2020-2026 Joaquim Homrighausen. All rights reserved.
  *
  * This file is part of SCFA. SCFA is free software.
  *
@@ -63,7 +63,6 @@ define( 'SCFA_DEBUG',            true                          );
 class SCFA_Class {
 
     public static $instance = null;
-    protected $plugin_name;
     protected $scfa_plugin_version;
     protected $scfa_have_mbstring;                // @since 1.2.0
     protected $scfa_asset_type;                   // 1=local, 2=url, 3=cdn, 4=none
@@ -98,11 +97,6 @@ class SCFA_Class {
             }
         } else {
             $this->scfa_plugin_version = $version;
-        }
-        if ( empty( $slug ) ) {
-            $this->plugin_name = SCFA_PLUGINNAME_SLUG;
-        } else {
-            $this->plugin_name = $slug;
         }
         // Possibly trigger call debugging
         if ( defined('SCFA_DEBUG' ) ) {
@@ -150,7 +144,7 @@ class SCFA_Class {
      * @since 1.0.0
      */
     public function scfa_locale() {
-        if ( ! load_plugin_textdomain( $this->plugin_name,
+        if ( ! load_plugin_textdomain( 'shortcodes-for-font-awesome',
                                        false,
                                        dirname( plugin_basename( __FILE__ ) ) . '/languages' ) ) {
             /**
@@ -248,7 +242,7 @@ class SCFA_Class {
             esc_html__( 'SCFA settings', 'shortcodes-for-font-awesome' ),
             'SCFA' . ' [ <span class="small fa-solid fa-font"></span>&nbsp;<span class="fa-solid fa-code"></span> ]',
             'manage_options',
-            $this->plugin_name, [ $this, 'scfa_admin_setup_options_page' ] );
+            'shortcodes-for-font-awesome', [ $this, 'scfa_admin_setup_options_page' ] );
         // Add 'Settings' link in plugin list, @since 1.2.0
         add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), [$this, 'scfa_admin_settings_link'] );
     }
@@ -259,8 +253,10 @@ class SCFA_Class {
      * @since 1.2.0
      */
     public function scfa_admin_settings_link( array $links ) {
-        $our_link = '<a href ="' . esc_url( admin_url() ) . 'options-general.php?page=' .
-                    $this->plugin_name. '">' . esc_html__( 'Settings' ) . '</a> ';
+        $our_link =
+            '<a href ="' . esc_url( admin_url() ) . 'options-general.php?page=' .
+            'shortcodes-for-font-awesome' . '">' .
+            esc_html__( 'Settings', 'shortcodes-for-font-awesome' ) . '</a> ';
         array_unshift( $links, $our_link );
         return ( $links );
     }
@@ -276,7 +272,7 @@ class SCFA_Class {
         }
         // Get ourselves a proper URL
         // $action = admin_url( 'options-general.php' ) . '?page=scfa-settings';
-        $action = admin_url( 'admin.php' ) . '?page=' . $this->plugin_name;
+        $action = admin_url( 'admin.php' ) . '?page=' . 'shortcodes-for-font-awesome';
         //
         $html = '';
         $tab_header = '<div class="wrap">';
@@ -651,7 +647,7 @@ class SCFA_Class {
                 //the $current_screen->post_type as well ...
                 if ( $wp_base == 'post' && $wp_parent_base == 'edit' ) {
                     add_action( 'media_buttons', [$this, 'scfa_admin_make_classic_editor_button'], 1001 );
-                    wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/scfa-admin.js', array(), $this->resource_mtime( dirname(__FILE__).'/js/scfa-admin.js' ), 'all' );
+                    wp_enqueue_script( 'shortcodes-for-font-awesome', plugin_dir_url( __FILE__ ) . 'js/scfa-admin.js', array(), $this->resource_mtime( dirname(__FILE__).'/js/scfa-admin.js' ), 'all' );
                 }
             }
         }

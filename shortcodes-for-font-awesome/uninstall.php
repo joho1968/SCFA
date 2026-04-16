@@ -58,10 +58,10 @@ if ( ! current_user_can( 'manage_options' ) || ! current_user_can( 'delete_plugi
 */
 
 // Figure out if an uninstall should remove plugin settings.
-$remove_settings = get_option( 'scfa-remove-settings', '0' );
+$scfa_remove_settings = get_option( 'scfa-remove-settings', '0' );
 
 // Possibly remove our settings
-if ( $remove_settings == '1' ) {
+if ( $scfa_remove_settings == '1' ) {
     // scfa plugin options
     delete_option( 'scfa-asset-url' );
     delete_option( 'scfa-asset-type' );
