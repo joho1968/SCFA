@@ -112,6 +112,9 @@ You can replace all of the Font Awesome files in the `css/fontawesome/` sub-dire
 
 ## Upgrade Notice
 
+### 1.5.1
+* Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
+
 ### 1.4.1
 * Simply update the plugin via wordpress.org or download and install as per the installation instructions above.
 * The .eot, .svg, and .woff files in the /css/webfonts/ directory of the plugin are not used by Font Awesome 6 and can be removed.
